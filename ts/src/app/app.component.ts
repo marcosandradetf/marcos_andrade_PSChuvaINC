@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'DevChuva';
+  linkText: string = "PT, BR";
+
+  changeText1() {
+    this.linkText = "PT, BR";
+  }
+
+  changeText2() {
+    this.linkText = "EN, US";
+  }
+
+  changeText3() {
+    this.linkText = "ES, ES";
+  }
+
 }

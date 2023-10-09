@@ -11,26 +11,44 @@
       </div>
       <div class="my-5">
         <ul class="list-group list-group-flush">
-          <li class="list-group-item py-1 px-4"><a href="" class="text-decoration-none text-black">Apresentação</a></li>
-          <li class="list-group-item py-1 px-4"><a href="" class="text-decoration-none text-black">Comitês</a></li>
-          <li class="list-group-item py-1 px-4"><a href="" class="text-decoration-none text-black">Autores</a></li>
-          <li class="list-group-item py-1 px-4"><a href="" class="text-decoration-none text-black">Eixos temáticos</a></li>
-          <li class="list-group-item py-1 px-4"><a href="" class="text-decoration-none text-black">Trabalhos</a></li>
-          <li class="list-group-item py-1 px-4"><a href="" class="text-decoration-none text-black">Contato</a></li>
+          <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Apresentação</a>
+          </li>
+          <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Comitês</a></li>
+          <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Autores</a></li>
+          <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Eixos temáticos</a>
+          </li>
+          <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Trabalhos</a></li>
+          <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Contato</a></li>
         </ul>
       </div>
-
 
     </div>
 
     <div class="my_header">
 
       <div class="header_elements">
-        <a href="#"></a>
+        <div style="margin-right: 340px">
+          <ul class="p-0 m-0 style list-inline">
+            <li class="mt-1">Anais do Simpósio Latino Americano de Ciências de Alimentos</li>
+            <li class="h2">Anais do 13 Simpósio Latino Americano de Ciência de Alimentos</li>
+            <li class="negative">ISSN: 1234-5678</li>
+          </ul>
+
+        </div>
+
         <div>
-          <p>Anais do Simpósio Latino Americano de Ciências de Alimentos</p>
-          <p>Anais do 13 Simpósio Latino Americano de Ciência de Alimentos</p>
-          <p>ISSN: 1234-5678</p>
+          <div class="dropdown">
+            <button
+              class="btn btn-outline-dark dropdown-toggle p-2 px-3 d-flex justify-content-center align-items-center"
+              type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="/assets/language.png" width="24">{{ linkText  }}
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" #myLink href="#" (click)="changeText1()">PT, BR</a></li>
+              <li><a class="dropdown-item" #myLink href="#" (click)="changeText2()">EN, US</a></li>
+              <li><a class="dropdown-item" #myLink href="#" (click)="changeText3()">ES, ES</a></li>
+            </ul>
+          </div>
         </div>
 
         <div class="login">
@@ -39,6 +57,7 @@
       </div>
 
     </div>
+
   </div>
 
 </div>
