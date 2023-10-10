@@ -24,38 +24,113 @@
 
     </div>
 
-    <div class="my_header">
+    <div class="d-flex flex-column">
 
-      <div class="header_elements">
-        <div style="margin-right: 340px">
-          <ul class="p-0 m-0 style list-inline">
-            <li class="mt-1">Anais do Simpósio Latino Americano de Ciências de Alimentos</li>
-            <li class="h2">Anais do 13 Simpósio Latino Americano de Ciência de Alimentos</li>
-            <li class="negative">ISSN: 1234-5678</li>
-          </ul>
 
-        </div>
+      <div class="my_header">
 
-        <div>
-          <div class="dropdown">
-            <button
-              class="btn btn-outline-dark dropdown-toggle p-2 px-3 d-flex justify-content-center align-items-center"
-              type="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="/assets/language.png" width="24">{{ linkText  }}
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" #myLink href="#" (click)="changeText1()">PT, BR</a></li>
-              <li><a class="dropdown-item" #myLink href="#" (click)="changeText2()">EN, US</a></li>
-              <li><a class="dropdown-item" #myLink href="#" (click)="changeText3()">ES, ES</a></li>
+        <div class="header_elements">
+          <div style="margin-right: 340px">
+            <ul class="p-0 m-0 style list-inline">
+              <li class="mt-1">Anais do Simpósio Latino Americano de Ciências de Alimentos</li>
+              <li class="h2">Anais do 13 Simpósio Latino Americano de Ciência de Alimentos</li>
+              <li class="negative">ISSN: 1234-5678</li>
             </ul>
+
+          </div>
+
+          <div>
+            <div class="dropdown">
+              <button
+                class="btn btn-outline-dark dropdown-toggle p-2 px-3 d-flex justify-content-center align-items-center"
+                type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="/assets/language.png" width="24">{{ linkText  }}
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" #myLink href="#" (click)="changeText1()">PT, BR</a></li>
+                <li><a class="dropdown-item" #myLink href="#" (click)="changeText2()">EN, US</a></li>
+                <li><a class="dropdown-item" #myLink href="#" (click)="changeText3()">ES, ES</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="login">
+            <a href="#" class="mx-1">Login <img ngSrc="/assets/login.png" alt="login" height="30" width="30"></a>
           </div>
         </div>
 
-        <div class="login">
-          <a href="#" class="mx-1">Login <img ngSrc="/assets/login.png" alt="login" height="30" width="30"></a>
-        </div>
       </div>
 
+      <div class="d-flex">
+        <div class="page_title">
+          <div style="margin: 0 0 0 350px">
+            <h2 class="h2 my-4" style="color: #ed7839"><strong>Análise sensorial de preparações funcionais desenvolvidas
+              para
+              escolares entre 09 e 15 anos, do município de Campinas/SP</strong></h2>
+            <img src="/assets/video.png" alt="imagem com uma praia, letras e rosto de um anciao"
+                 style="border-radius: 5px; width: 95%;">
+          </div>
+        </div>
+
+        <div class="options_page">
+          <div class="d-flex justify-content-center" style="margin: 35px 0 0 40px">
+            <button type="button" class="btn text-white p-1 px-3 d-flex justify-content-center align-items-center m-1"
+                    style="background-color: #ed7839"><img src="/assets/download.png"
+                                                           alt="seta para baixo / download"><strong> Download</strong>
+            </button>
+            <button type="button" class="btn text-white p-1 px-3 d-flex justify-content-center align-items-center m-1"
+                    style="background-color: #ed7839"><img src="/assets/favorite.png" alt="estrela branca"></button>
+            <button type="button" class="btn text-white p-1 px-3 d-flex justify-content-center align-items-center m-1"
+                    style="background-color: #ed7839"><img src="/assets/doi.png" alt="imagem escrita doi"></button>
+          </div>
+          <div class="d-flex justify-content-center" style="margin: 10px 0 10px 85px">
+            <a href="#" style="color: #ed7839; text-decoration: none"><strong>COMO CITAR ESSE TRABALHO?</strong></a>
+          </div>
+          <div class="d-flex justify-content-center">
+            <table class="table" style="width: 250px;">
+              <thead>
+              <tr>
+                <th class="h3" style="background-color: #fdf1eb; color: #4e4e4e; padding-left: 15px">Detalhes</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <ul
+                  style="list-style: none; overflow: auto; max-height: 550px; border: 1px solid #e7e7e7; min-width: 320px; border-radius: 0 0 5px 5px;"
+                  class="p-3">
+                  <li class="dark_text">Tipo de Apresentação: <strong>Pôster</strong></li>
+                  <li class="dark_text">Eixo temático: <strong>Alimentação e saúde (AS)</strong></li>
+                  <li class="dark_text">Palavras-chaves: <strong>Alimentos funcionais, alimenta ao escolar.</strong>
+                  </li>
+                  <li><br></li>
+                  <li class="dark_text"><strong>Autores</strong></li>
+                  <li class="dark_text">Galileo Galilei¹</li>
+                  <li class="dark_text">Berta Lange de Morretes²</li>
+                  <li class="dark_text">Isaac Newton³</li>
+                  <li class="dark_text">Cesar Lattes⁴</li>
+                  <li class="dark_text">Stephen Hawking⁵</li>
+                  <li><br></li>
+                  <li><br></li>
+                  <li style="color: #c2b8b8">¹Universidade Estadual de Campinas</li>
+                  <li style="color: #c2b8b8">²Universidade cie São Paulo</li>
+                  <li style="color: #c2b8b8">³Instituto Nacional de Pesquisas Espaciais</li>
+                  <li style="color: #c2b8b8">⁴Universidade Federal do Rio de Janeiro</li>
+                  <li><br></li>
+                  <li><br></li>
+                  <li><br></li>
+                  <li><br></li>
+                  <li><br></li>
+                  <li><br></li>
+                  <li><br></li>
+                </ul>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+        </div>
+      </div>
     </div>
 
   </div>

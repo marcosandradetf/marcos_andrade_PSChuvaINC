@@ -56,3 +56,28 @@
   min-height: 100%;
   height: auto;
 }
+
+.page_title {
+  min-width: 78%;
+  width: auto;
+  min-height: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.options_page {
+  min-width: 22%;
+  width: auto;
+  min-height: 100%;
+  height: auto;
+}
+
+.dark_text {
+  color: #5c5c5c;
+}
+
+th {
+  border-radius: 5px 5px 0 0;
+}
