@@ -1,38 +1,49 @@
-import {Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
+import {Component, ElementRef, ViewChild, Renderer2} from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  @ViewChild("viewmore") MySpan!: ElementRef;
+    @ViewChild("viewmore") MySpan!: ElementRef;
 
-  title = 'DevChuva';
-  linkText: string = "PT, BR";
-  removerClasse: boolean = true;
-  adicionarClasse: boolean = false;
+    title = 'DevChuva';
+    linkText: string = "PT, BR";
+    removerClasse: boolean = true;
+    adicionarClasse: boolean = false;
+    exibirFormulario: boolean = true;
+    hidden_topic_button: boolean = false;
 
-  changeText1() {
-    this.linkText = "PT, BR";
-  }
-
-  changeText2() {
-    this.linkText = "EN, US";
-  }
-
-  changeText3() {
-    this.linkText = "ES, ES";
-  }
-
-  toggleClasse() {
-    this.removerClasse = !this.removerClasse;
-
-    if (!this.adicionarClasse) {
-      this.adicionarClasse = !this.removerClasse;
-    }else {
-      this.adicionarClasse = !this.removerClasse;
+    changeText1() {
+        this.linkText = "PT, BR";
     }
-  }
+
+    changeText2() {
+        this.linkText = "EN, US";
+    }
+
+    changeText3() {
+        this.linkText = "ES, ES";
+    }
+
+    toggleClasse() {
+        this.removerClasse = !this.removerClasse;
+
+        if (!this.adicionarClasse) {
+            this.adicionarClasse = !this.removerClasse;
+        } else {
+            this.adicionarClasse = !this.removerClasse;
+        }
+    }
+
+    createTopic() {
+        this.exibirFormulario = !this.exibirFormulario;
+        if (!this.hidden_topic_button) {
+            this.hidden_topic_button = true;
+        } else {
+            this.hidden_topic_button = false;
+        }
+    }
 
 }

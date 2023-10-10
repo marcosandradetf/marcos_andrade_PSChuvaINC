@@ -127,7 +127,7 @@ th {
   border: 1px solid #dee2e6;
 }
 
-.view_more {
+.btn-show-more {
   color: #ed7839;
   cursor: pointer;
   font-weight: bold;
@@ -137,7 +137,7 @@ th {
   display: none;
 }
 
-.view_more2 {
+.btn-show-less {
   color: #ed7839;
   cursor: pointer;
   font-weight: bold;
@@ -148,7 +148,7 @@ th {
   min-width: 100%;
   width: auto;
   max-height: 100%;
-  height: auto;
+  height: 1000px; // apagar depois
   justify-content: flex-end;
   margin-top: 20px;
 }
