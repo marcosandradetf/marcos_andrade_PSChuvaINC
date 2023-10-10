@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +6,12 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild("viewmore") MySpan!: ElementRef;
+
   title = 'DevChuva';
   linkText: string = "PT, BR";
+  removerClasse: boolean = true;
+  adicionarClasse: boolean = false;
 
   changeText1() {
     this.linkText = "PT, BR";
@@ -19,6 +23,16 @@ export class AppComponent {
 
   changeText3() {
     this.linkText = "ES, ES";
+  }
+
+  toggleClasse() {
+    this.removerClasse = !this.removerClasse;
+
+    if (!this.adicionarClasse) {
+      this.adicionarClasse = !this.removerClasse;
+    }else {
+      this.adicionarClasse = !this.removerClasse;
+    }
   }
 
 }

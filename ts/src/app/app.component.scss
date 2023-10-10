@@ -81,3 +81,45 @@
 th {
   border-radius: 5px 5px 0 0;
 }
+
+.about_container {
+  display: flex;
+  min-width: 100%;
+  width: auto;
+  min-height: 100%;
+  height: auto;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.about {
+  max-width: 79.5%;
+  margin-left: 345px;
+}
+
+.about th{
+  color: #4e4e4e;
+  background-color: #fdf1eb;
+  padding-left: 10px;
+  height: 60px;
+}
+
+.about td{
+  border: 1px solid #dee2e6;
+}
+
+.view_more {
+  color: #ed7839;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.show_less {
+  display: none;
+}
+
+.view_more2 {
+  color: #ed7839;
+  cursor: pointer;
+  font-weight: bold;
+}
