@@ -6,7 +6,6 @@
     ],
     "content-hash": "c8a79bba81f14d1fb1c36a0edb3f32c4",
     "content-hash": "6bcde244aa0847ba96e3caf186f92626",
->>>>>>> 4bbb9dd3e59bafe0776203cdee9043f98a525d62
     "packages": [
         {
             "name": "box/spout",

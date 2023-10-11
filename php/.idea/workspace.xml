@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="50d91590-214a-4395-becd-e9bfb008680b" name="Changes" comment="fix: resolvendo espacos e comentarios do codigo">
+      <change beforePath="$PROJECT_DIR$/../ts/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ts/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ts/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../ts/src/app/app.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ts/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ts/src/app/app.component.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;marcosandradetf&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="0745253d-c165-4f9b-a2e6-b67e3de81f8c" />
+        <option name="url" value="https://github.com/marcosandradetf/marcos_andrade_PSChuvaINC.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/WebScrapping/Entity/Paper.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/WebScrapping/Main.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+  </component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="D:\dev\php\php.exe">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/drupal/coder" />
+      <path value="$PROJECT_DIR$/vendor/phpstan/phpdoc-parser" />
+      <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/sirbrillig/phpcs-variable-analysis" />
+      <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
+      <path value="$PROJECT_DIR$/vendor/psalm/phar" />
+      <path value="$PROJECT_DIR$/vendor/dealerdirect/phpcodesniffer-composer-installer" />
+      <path value="$PROJECT_DIR$/vendor/openspout/openspout" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/slevomat/coding-standard" />
+      <path value="$PROJECT_DIR$/vendor/box/spout" />
+    </include_path>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2WT82bu3NkS6M1AU53gMn7ot1E4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;workPage/typescript&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Developer/marcos_andrade_PSChuvaINC/php&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="C:\Users\dev\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="3021b044-3b0c-4f6f-bd35-eb69dd4f5b24" reportId="php/qodana/2023-10-08" />
+    </option>
+  </component>
+  <component name="RunManager" selected="PHP Script.Main.php">
+    <configuration name="Main.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/WebScrapping/Main.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="Paper.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/WebScrapping/Entity/Paper.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="Person.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/WebScrapping/Entity/Person.php">
+      <method v="2" />
+    </configuration>
+    <configuration name="Scrapper.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/src/WebScrapping/Scrapper.php">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.Main.php" />
+        <item itemvalue="PHP Script.Scrapper.php" />
+        <item itemvalue="PHP Script.Paper.php" />
+        <item itemvalue="PHP Script.Person.php" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="50d91590-214a-4395-becd-e9bfb008680b" name="Changes" comment="" />
+      <created>1696745004759</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696745004759</updated>
+      <workItem from="1696745005729" duration="113000" />
+      <workItem from="1696745129262" duration="838000" />
+      <workItem from="1696745986042" duration="1160000" />
+      <workItem from="1696747168473" duration="319000" />
+      <workItem from="1696747501841" duration="34000" />
+      <workItem from="1696747547349" duration="451000" />
+      <workItem from="1696748026979" duration="802000" />
+      <workItem from="1696749079268" duration="1386000" />
+      <workItem from="1696779230528" duration="4773000" />
+      <workItem from="1696784651595" duration="5637000" />
+      <workItem from="1696820566872" duration="681000" />
+      <workItem from="1696821586141" duration="624000" />
+      <workItem from="1696822226885" duration="2673000" />
+      <workItem from="1696987136113" duration="2000" />
+    </task>
+    <task id="LOCAL-00001" summary="contructor da classe Paper corrigido">
+      <option name="closed" value="true" />
+      <created>1696745831454</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1696745831454</updated>
+    </task>
+    <task id="LOCAL-00002" summary="contructor da classe Paper corrigido">
+      <option name="closed" value="true" />
+      <created>1696749283117</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1696749283117</updated>
+    </task>
+    <task id="LOCAL-00003" summary="contructor da classe Paper corrigido e metodos adicionados">
+      <option name="closed" value="true" />
+      <created>1696781194773</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1696781194773</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Finalizada implementação da lógica de Web Scraper na classe Scrapper">
+      <option name="closed" value="true" />
+      <created>1696784531552</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1696784531552</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Finalizada implementação da lógica de Web Scraper na classe Scrapper">
+      <option name="closed" value="true" />
+      <created>1696784668748</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1696784668748</updated>
+    </task>
+    <task id="LOCAL-00006" summary="feat: finalizada implementação da lógica de Web Scraper na classe Scrapper">
+      <option name="closed" value="true" />
+      <created>1696784847666</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1696784847666</updated>
+    </task>
+    <task id="LOCAL-00007" summary="feat: finalizada implementação da lógica para escrever os dados na planilha com Spout">
+      <option name="closed" value="true" />
+      <created>1696820717327</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1696820717327</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: contructor da classe Paper corrigido e métodos adicionados">
+      <option name="closed" value="true" />
+      <created>1696821856667</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1696821856667</updated>
+    </task>
+    <task id="LOCAL-00009" summary="feat: finalizada implementação da lógica de Web Scraper na classe Scrapper">
+      <option name="closed" value="true" />
+      <created>1696822034499</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1696822034499</updated>
+    </task>
+    <task id="LOCAL-00010" summary="feat: finalizada implementação da lógica para escrever os dados na planilha com Spout">
+      <option name="closed" value="true" />
+      <created>1696822327099</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1696822327099</updated>
+    </task>
+    <task id="LOCAL-00011" summary="fix: resolvendo comentarios do codigo">
+      <option name="closed" value="true" />
+      <created>1696823266257</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1696823266257</updated>
+    </task>
+    <task id="LOCAL-00012" summary="fix: resolvendo comentarios do codigo">
+      <option name="closed" value="true" />
+      <created>1696823979668</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1696823979668</updated>
+    </task>
+    <task id="LOCAL-00013" summary="fix: resolvendo comentarios do codigo">
+      <option name="closed" value="true" />
+      <created>1696824206021</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1696824206021</updated>
+    </task>
+    <task id="LOCAL-00014" summary="fix: resolvendo espacos e comentarios do codigo">
+      <option name="closed" value="true" />
+      <created>1696824324992</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1696824324992</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="feat: atualiza faq" />
+    <MESSAGE value="Cla" />
+    <MESSAGE value="contructor da classe Paper corrigido" />
+    <MESSAGE value="contructor da classe Paper corrigido e metodos adicionados" />
+    <MESSAGE value="Finalizada implementação da lógica de Web Scraper na classe Scrapper" />
+    <MESSAGE value="feat: contructor da classe Paper corrigido e métodos adicionados" />
+    <MESSAGE value="feat: finalizada implementação da lógica de Web Scraper na classe Scrapper" />
+    <MESSAGE value="feat: finalizada implementação da lógica para escrever os dados na planilha com Spout" />
+    <MESSAGE value="fix: resolvendo comentarios do codigo" />
+    <MESSAGE value="fix: resolvendo espacos e comentarios do codigo" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: resolvendo espacos e comentarios do codigo" />
+  </component>
+</project>
