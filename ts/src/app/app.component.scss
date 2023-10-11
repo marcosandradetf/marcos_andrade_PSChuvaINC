@@ -176,14 +176,14 @@ th {
   display: none !important;
 }
 
-.feedback_await{
+.feedback_await {
   height: 175px;
 }
 
-.feedback_await{
+.feedback_await {
 }
 
-.feedback_await::before{
+.feedback_await::before {
   content: "";
   position: absolute;
   top: 0;
@@ -195,7 +195,7 @@ th {
   z-index: 1;
 }
 
-.feedback-message{
+.feedback-message {
   color: #707070;
   position: absolute;
   top: 50%;
@@ -208,7 +208,7 @@ th {
   text-align: center;
 }
 
-.feedback-message a{
+.feedback-message a {
   font-size: 14px;
   color: #ed7839;
   font-weight: lighter;
@@ -278,7 +278,7 @@ tr.card td:nth-child(4) {
   color: #868686;
 }
 
-.text1{
+.text1 {
   font-size: 14px !important;
   color: #5c5c5c !important;
   font-weight: bold !important;
@@ -316,7 +316,6 @@ tr.card td:nth-child(4) {
   display: none;
 }
 
-
 tr.card {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.12);
 }
@@ -344,12 +343,12 @@ tr.card {
 
 }
 
-.rover_buttons li:hover{
+.rover_buttons li:hover {
   background-color: #fdf1eb;
   cursor: pointer;
 }
 
-.button_active{
+.button_active {
   position: relative;
   padding-left: 20px;
 }
@@ -380,15 +379,13 @@ tr.card {
   z-index: 2;
 }
 
-
-
 .button_active a {
   position: relative; /* Torna o link um contexto de empilhamento para o z-index funcionar */
   z-index: 5; /* Elevar o texto acima do elemento pseudo */
 }
 
 .footer {
-  border-top: 1px solid  #e7e7e7;
+  border-top: 1px solid #e7e7e7;
   margin-top: 50px;
   margin-left: 320px;
   width: 79%;
@@ -400,7 +397,7 @@ tr.card {
   color: #5c5c5c;
 }
 
-.footer_text p:nth-child(1){
+.footer_text p:nth-child(1) {
   margin-bottom: 20px;
 }
 
@@ -417,11 +414,11 @@ tr.card {
     font-size: 12px;
   }
 
-
-  .mq-1-2{
+  .mq-1-2 {
     height: 470px !important;
   }
 }
+
 @media (max-width: 1441px) {
   .header_elements li:nth-child(1) {
     font-size: 12px;
@@ -435,8 +432,7 @@ tr.card {
     font-size: 12px;
   }
 
-
-  .mq-1-2{
+  .mq-1-2 {
     height: 378px !important;
   }
 }
@@ -455,27 +451,27 @@ tr.card {
   }
 
 
-  .mq-1-2{
+  .mq-1-2 {
     height: 328px !important;
   }
 
   .footer {
-    border-top: 1px solid  #e7e7e7;
+    border-top: 1px solid #e7e7e7;
     margin-top: 50px;
     margin-left: 320px;
     width: 70%;
     padding: 10px 10px 50px 10px;
   }
 
-  .footer_text{
+  .footer_text {
     font-size: 14px;
   }
 
-  .logo_footer{
+  .logo_footer {
     width: 450px !important;
   }
 
-  .icon_logo_footer{
+  .icon_logo_footer {
     //width: 200px;
   }
 
@@ -494,10 +490,7 @@ tr.card {
     font-size: 10px;
   }
 
-
-  .mq-1-2{
+  .mq-1-2 {
     height: 328px !important;
   }
-
-
 }
