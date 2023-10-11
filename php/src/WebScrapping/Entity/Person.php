@@ -25,4 +25,18 @@ class Person {
     $this->institution = $institution;
   }
 
+  /**
+   * Method for return author name.
+   */
+  public function getName(): string {
+    return $this->name;
+  }
+
+  /**
+   * Method for return institution.
+   */
+  public function getInstitution(): string {
+    return $this->institution;
+  }
+
 }
