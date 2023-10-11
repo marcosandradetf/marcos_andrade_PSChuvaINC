@@ -67,7 +67,6 @@ export class AppComponent {
 
   }
 
-
   toggleClicked() {
     this.isClicked = !this.isClicked;
   }
@@ -84,4 +83,5 @@ export class AppComponent {
       this.expandBool2 = false;
     }
   }
+
 }

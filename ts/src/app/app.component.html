@@ -10,7 +10,7 @@
         <img ngSrc="/assets/logo.png" alt="logo" height="237" width="218">
       </div>
       <div class="my-5">
-        <ul class="list-group list-group-flush">
+        <ul class="list-group list-group-flush rover_buttons">
           <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Apresentação</a>
           </li>
           <li class="list-group-item py-1 px-4"><a href="#"
@@ -20,8 +20,9 @@
           <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Eixos
             temáticos</a>
           </li>
-          <li class="list-group-item py-1 px-4"><a href="#"
-                                                   class="text-decoration-none text-black">Trabalhos</a></li>
+          <li class="list-group-item py-1 px-4 button_active"><a href="#"
+                                                                 class="text-decoration-none text-black">Trabalhos</a>
+          </li>
           <li class="list-group-item py-1 px-4"><a href="#"
                                                    class="text-decoration-none text-black">Contato</a></li>
         </ul>
@@ -106,13 +107,13 @@
 
             <div class="page_title">
               <div>
-                <h2 class="h2 my-4" style="color: #ed7839"><strong>Análise sensorial de preparações
+                <h2 class="h2 my-4" style="color: #ed7839; width: 95%"><strong>Análise sensorial de preparações
                   funcionais
                   desenvolvidas
                   para
                   escolares entre 09 e 15 anos, do município de Campinas/SP</strong></h2>
                 <img src="/assets/video.png" alt="imagem com uma praia, letras e rosto de um anciao"
-                     style="border-radius: 5px; width: 95%;">
+                     style="border-radius: 5px; width: 95%">
               </div>
             </div>
 
@@ -150,8 +151,8 @@
                   <tbody>
                   <tr>
                     <ul
-                      style="list-style: none; overflow: auto; max-height: 550px; border: 1px solid #e7e7e7; min-width: 320px; border-radius: 0 0 5px 5px;"
-                      class="p-3">
+                      style="list-style: none; overflow: auto; max-height: 590px; border: 1px solid #e7e7e7; min-width: 320px; border-radius: 0 0 5px 5px;"
+                      class="p-3 mq-1-2">
                       <li class="dark_text">Tipo de Apresentação: <strong>Pôster</strong></li>
                       <li class="dark_text">Eixo temático: <strong>Alimentação e saúde
                         (AS)</strong></li>
@@ -394,9 +395,17 @@
                 </td>
               </tr>
               <tr [ngClass]="{'feedBack': feedBack}"
-                  class="card d-flex justify-content-center align-items-center p-4 m-3">
-                <td class="card-body">
-                  Aguardando feedback dos autores
+                  class="card p-4 m-3 feedback_await position-relative">
+                <td><strong>Assunto da pergunta aparece aqui</strong></td>
+                <td>Carlos Henrique Santos</td>
+                <td>Comecinho da pergunta aparece aqui resente relato inscreve-se no campo da análise da dimensão e
+                  impacto de processo formativo situado impacto
+                  de processo formativo processo...
+                  <span class="feedback-message">
+                    <img src="/assets/okay2.png" alt="imagem com simbolo de verificado">
+                    <p>Aguardando feedback dos autores</p>
+                    <a href="#">Editar tópico</a>
+                  </span>
                 </td>
               </tr>
 
@@ -405,7 +414,7 @@
                 <td>Carlos Henrique Santos</td>
                 <td>Comecinho da pergunta aparece aqui resente relato inscreve-se no campo da análise da dimensão e
                   impacto de processo formativo situado impacto
-                  de processo formativo processo
+                  de processo formativo processo...
                 </td>
                 <td class="d-flex align-items-center">
                   <div class="d-flex flex-column options_click"><span>.</span><span>.</span><span>.</span></div>
@@ -415,13 +424,14 @@
               </tr>
 
               <tr class="card p-4 m-3 answered-topic ops-topic-subject" [ngClass]="{'expandeClass': expandBool2}">
+
                 <td><strong>Assunto da pergunta aparece aqui</strong></td>
                 <td>Carlos Henrique Santos</td>
                 <td class="answered-topic ops-topic-subject" (click)="expandFun()">
                   Comecinho da pergunta aparece aqui resente relato
                   inscreve-se no campo da análise da dimensão e
                   impacto de processo formativo situado impacto
-                  de processo formativo processo
+                  de processo formativo processo...
                 </td>
                 <td class="d-flex align-items-center">
                   <div class="d-flex flex-column options_click"><span>.</span><span>.</span><span>.</span></div>
@@ -452,7 +462,7 @@
                   [ngClass]="{'expandeClass': expandBool}">
                 <td class="d-flex justify-content-between">
                   <div>
-                    <p style="font-size: 14px;"><strong>Adriano da Silva</strong></p>
+                    <p style="font-size: 14px; color: #5c5c5c"><strong>Adriano da Silva</strong></p>
                   </div>
                   <div>
                     <div class="d-flex">
@@ -461,69 +471,69 @@
                     </div>
                   </div>
                 </td>
-                <td>Resposta do autor é aqui. Relato inscreve-se no campo da análise da dimensdo e impacto de processo
+                <td class="text2">Resposta do autor é aqui. Relato inscreve-se no campo da análise da dimensdo e impacto
+                  de processo
                   formativo situado impacto de processo
                   formativo processo resente relato inscreve-se no campo dc análise dc dimensdo e impacto de processo
                   formativo situado impacto de processo
                   formativo processo.
                 </td>
               </tr>
-              <tr class="card m-3 p-4 comments-container" style="border-radius: 0; background-color: #f8f8f8"
+              <tr class="card m-3 p-4 comments-container" style="border-radius: 0; background-color: #ffffff"
                   [ngClass]="{'expandeClass': expandBool}">
-                <td class="d-flex justify-content-between">
-                  <div>
-                    <p style="font-size: 14px;"><strong>Adriano da Silva</strong></p>
-                  </div>
-                  <div>
-                    <div class="d-flex">
-                      <p class="h6"><strong>Autor</strong></p>
-                      <img src="/assets/okay.png" alt="simbolo de verificado" style="margin-left: 30px">
-                    </div>
-                  </div>
+                <td class="text1" style="margin-bottom: 5px">
+                  Carlos Henrique Santos
                 </td>
-                <td>Resposta do autor é aqui. Relato inscreve-se no campo da análise da dimensdo e impacto de processo
-                  formativo situado impacto de processo
-                  formativo processo resente relato inscreve-se no campo dc análise dc dimensdo e impacto de processo
-                  formativo situado impacto de processo
-                  formativo processo.
+                <td class="text2">
+                  Consegui entender melhor agora! Parece que a variacâo da análise da dimensão e impacto de processo
+                  formativo situado impacto de processo formativo.
+                </td>
+                <td class="text2">
+                  Obrigada pela resposta, muito interessante o seu trabalho!
                 </td>
               </tr>
               <tr class="card m-3 p-4 comments-container" style="border-radius: 0; background-color: #f8f8f8"
                   [ngClass]="{'expandeClass': expandBool}">
                 <td class="d-flex justify-content-between">
                   <div>
-                    <p style="font-size: 14px;"><strong>Adriano da Silva</strong></p>
+                    <p style="font-size: 14px; color: #5c5c5c"><strong>Carmila Ferreira Andrade</strong></p>
                   </div>
                   <div>
                     <div class="d-flex">
-                      <p class="h6"><strong>Autor</strong></p>
+                      <p class="h6"><strong>Coautor</strong></p>
                       <img src="/assets/okay.png" alt="simbolo de verificado" style="margin-left: 30px">
                     </div>
                   </div>
                 </td>
-                <td>Resposta do autor é aqui. Relato inscreve-se no campo da análise da dimensdo e impacto de processo
-                  formativo situado impacto de processo
-                  formativo processo resente relato inscreve-se no campo dc análise dc dimensdo e impacto de processo
-                  formativo situado impacto de processo
-                  formativo processo.
+                <td class="text2">Também interessante lembrar que o relato inscreve-se no campo da análise da dimensão e
+                  impacto de
+                  processo formativo situado impacto de
+                  processo formativo processo resente relato inscreve-se no campo da análise da dimensão e impacto de
+                  processo formativo situado impacto de
+                  processo formativo processo.
+                </td>
+                <td class="text2">
+                  Situado impacto de processo formativo processo resente relato inscreve-se no campo da análise da
+                  dimensão e impacto de processo formativo
+                  situado impacto de processo formativo processo.
                 </td>
               </tr>
               <tr class="card m-3 p-4" style="border-radius: 0 0 5px 5px; background-color: #f8f8f8"
                   [ngClass]="{'expandeClass': expandBool}">
                 <td class="d-flex justify-content-between">
                   <div>
-                    <p style="font-size: 14px;"><strong>Adriano da Silva</strong></p>
+                    <p style="font-size: 14px; color: #5c5c5c"><strong>Ana Carolina</strong></p>
                   </div>
                   <div>
                     <div class="d-flex">
-                      <p class="h6"><strong>Autor</strong></p>
+                      <p class="h6"><strong>Coautor</strong></p>
                       <img src="/assets/okay.png" alt="simbolo de verificado" style="margin-left: 30px">
                     </div>
                   </div>
                 </td>
-                <td>Resposta do autor é aqui. Relato inscreve-se no campo da análise da dimensdo e impacto de processo
-                  formativo situado impacto de processo
-                  formativo processo resente relato inscreve-se no campo dc análise dc dimensdo e impacto de processo
+                <td class="text2">Resposta do autor é aqui. Relato inscreve-se no campo da análise da dimensão e impacto
+                  de processo formativo situado impacto de processo
+                  formativo processo resente relato inscreve-se no campo da análise da dimensão e impacto de processo
                   formativo situado impacto de processo
                   formativo processo.
                 </td>
@@ -531,11 +541,25 @@
 
 
             </table>
+
+
           </div>
+
+        </div>
+        <div class="footer">
+          <ul class="d-flex">
+            <li style="width: 300px" class="logo_footer">
+              <img src="/assets/icon_galoa.png" alt="imagem com logo galoa" class="icon_logo_footer">
+            </li>
+            <li class="footer_text">
+              <p><strong>Preservar a memória do evento e ampliar o acesso ao conhecimento científico</strong> gerado em eventos é a razôo de ser da
+                plataforma Galoá Proceedings.</p>
+              <p>Os trabalhos publicados aqui têm maior alcance e ficam disponíveis para toda a comunidade científica, mantendo aceso o
+                debate científico fomentado pelos encontros e aumentando o impacto do evento.</p>
+            </li>
+          </ul>
         </div>
       </div>
-
     </div>
-
   </div>
 </div>
