@@ -64,7 +64,6 @@ export class AppComponent {
       this.sucessMessage = true;
       this.feedBack = true;
     }
-
   }
 
   toggleClicked() {
