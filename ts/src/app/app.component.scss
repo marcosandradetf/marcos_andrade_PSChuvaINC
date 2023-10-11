@@ -219,8 +219,64 @@ th {
   transform: translateY(0); /* Volta à posição original quando pressionado */
 }
 
-.card-body {
-  height: 150px;
+tr.card td:nth-child(1) {
+  font-size: 20px;
+  color: #ed7839;
+}
+
+tr.card td:nth-child(2) {
+  font-size: 14px;
+  color: #5c5c5c;
+}
+
+tr.card td:nth-child(3) {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #909090;
+}
+
+tr.card td:nth-child(4) {
+  font-size: 16px;
+  color: #868686;
+}
+
+.options_click {
+  margin-top: 20px;
+}
+
+.options_click span {
+  color: #ed7839;
+  font-weight: bold;
+  font-size: 28px;
+  margin-top: -35px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.emoji {
+  background-color: #ed7839;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.expandeClass {
+  display: none;
+}
+
+
+tr.card {
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.12);
+}
+
+.answered-topic, .comments-container {
+  cursor: pointer;
+}
+
+.comments-container {
+  margin-bottom: -18px !important;
 }
 
 @media (max-width: 1540px) {
