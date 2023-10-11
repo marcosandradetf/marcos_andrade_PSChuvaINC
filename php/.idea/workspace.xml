@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50d91590-214a-4395-becd-e9bfb008680b" name="Changes" comment="fix: resolvendo espacos e comentarios do codigo" />
+    <list default="true" id="50d91590-214a-4395-becd-e9bfb008680b" name="Changes" comment="fix: resolvendo espacos e comentarios do codigo">
+      <change beforePath="$PROJECT_DIR$/../ts/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../ts/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ts/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../ts/src/app/app.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ts/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../ts/src/app/app.component.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,23 +76,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "workPage/typescript",
-    "last_opened_file_path": "D:/Developer/marcos_andrade_PSChuvaINC/php",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;workPage/typescript&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Developer/marcos_andrade_PSChuvaINC/php&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="C:\Users\dev\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="3021b044-3b0c-4f6f-bd35-eb69dd4f5b24" reportId="php/qodana/2023-10-08" />
@@ -137,6 +141,7 @@
       <workItem from="1696820566872" duration="681000" />
       <workItem from="1696821586141" duration="624000" />
       <workItem from="1696822226885" duration="2673000" />
+      <workItem from="1696987136113" duration="2000" />
     </task>
     <task id="LOCAL-00001" summary="contructor da classe Paper corrigido">
       <option name="closed" value="true" />

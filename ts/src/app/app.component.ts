@@ -14,6 +14,8 @@ export class AppComponent {
     adicionarClasse: boolean = false;
     exibirFormulario: boolean = true;
     hidden_topic_button: boolean = false;
+    sucessMessage: boolean = true;
+    feedBack: boolean = true;
 
     changeText1() {
         this.linkText = "PT, BR";
@@ -45,5 +47,21 @@ export class AppComponent {
             this.hidden_topic_button = false;
         }
     }
+
+    Submit() {
+        this.exibirFormulario = !this.exibirFormulario;
+        this.sucessMessage = !this.sucessMessage;
+        this.feedBack = !this.feedBack;
+    }
+
+    createNewTopic() {
+        this.exibirFormulario = !this.exibirFormulario;
+        if (!this.sucessMessage) {
+            this.sucessMessage = true;
+            this.feedBack = true;
+        }
+
+    }
+
 
 }
