@@ -1,410 +1,565 @@
 <div>
 
-    <div class="main">
+  <div class="main">
 
-        <div class="side_bar">
-            <div class="text-white side_bar_elements">
-                <h1>SLACA 2019</h1>
+    <div class="side_bar">
+      <div class="text-white side_bar_elements">
+        <h1>SLACA 2019</h1>
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <img ngSrc="/assets/logo.png" alt="logo" height="237" width="218">
+      </div>
+      <div class="my-5">
+        <ul class="list-group list-group-flush rover_buttons">
+          <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Apresentação</a>
+          </li>
+          <li class="list-group-item py-1 px-4"><a href="#"
+                                                   class="text-decoration-none text-black">Comitês</a></li>
+          <li class="list-group-item py-1 px-4"><a href="#"
+                                                   class="text-decoration-none text-black">Autores</a></li>
+          <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Eixos
+            temáticos</a>
+          </li>
+          <li class="list-group-item py-1 px-4 button_active"><a href="#"
+                                                                 class="text-decoration-none text-black">Trabalhos</a>
+          </li>
+          <li class="list-group-item py-1 px-4"><a href="#"
+                                                   class="text-decoration-none text-black">Contato</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="d-flex flex-column">
+
+
+      <div class="my_header">
+
+        <div class="header_elements">
+          <div>
+            <ul class="list-inline">
+              <li class="mt-1">Anais do Simpósio Latino Americano de Ciências de Alimentos</li>
+              <li class="h2">Anais do 13 Simpósio Latino Americano de Ciência de Alimentos</li>
+              <li class="negative">ISSN: 1234-5678</li>
+            </ul>
+
+          </div>
+
+          <div class="idioma">
+            <div class="dropdown">
+              <a
+                class="btn btn-outline-dark dropdown-toggle p-2 px-3 d-flex justify-content-center align-items-center"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="/assets/language.png" width="24">{{ linkText  }}
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" #myLink href="#" (click)="changeText1()">PT, BR</a></li>
+                <li><a class="dropdown-item" #myLink href="#" (click)="changeText2()">EN, US</a></li>
+                <li><a class="dropdown-item" #myLink href="#" (click)="changeText3()">ES, ES</a></li>
+              </ul>
             </div>
-            <div class="d-flex justify-content-center align-items-center">
-                <img ngSrc="/assets/logo.png" alt="logo" height="237" width="218">
+          </div>
+
+          <div class="login">
+            <a style="margin-right: 50px; padding: 0" data-bs-toggle="modal"
+               data-bs-target="#exampleModal" class="btn">
+              Login <img ngSrc="/assets/login.png" alt="login" height="30" width="30">
+            </a>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content w-75">
+                  <div class="modal-header">
+                    <a class="btn-close p-4" data-bs-dismiss="modal"
+                       aria-label="Close"></a>
+                  </div>
+                  <div class="modal-body">
+                    <form action=""
+                          class="d-flex justify-content-center align-items-center flex-column">
+                      <div class="my-3 mt-5 w-75">
+                        <input type="text" id="user" placeholder="Email" class="w-100">
+                      </div>
+                      <div class="my-3 w-75">
+                        <input type="text" id="password" placeholder="Password" class="w-100">
+
+                      </div>
+                      <div class="my-3 w-75">
+                        <a class="my-button text-white">Login
+                        </a>
+                      </div>
+
+                    </form>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="my-5">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Apresentação</a>
-                    </li>
-                    <li class="list-group-item py-1 px-4"><a href="#"
-                                                             class="text-decoration-none text-black">Comitês</a></li>
-                    <li class="list-group-item py-1 px-4"><a href="#"
-                                                             class="text-decoration-none text-black">Autores</a></li>
-                    <li class="list-group-item py-1 px-4"><a href="#" class="text-decoration-none text-black">Eixos
-                        temáticos</a>
-                    </li>
-                    <li class="list-group-item py-1 px-4"><a href="#"
-                                                             class="text-decoration-none text-black">Trabalhos</a></li>
-                    <li class="list-group-item py-1 px-4"><a href="#"
-                                                             class="text-decoration-none text-black">Contato</a></li>
-                </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="d-flex flex-column">
+
+        <div class="video_container">
+
+          <div class="video_screen">
+
+            <div class="page_title">
+              <div>
+                <h2 class="h2 my-4" style="color: #ed7839; width: 95%"><strong>Análise sensorial de preparações
+                  funcionais
+                  desenvolvidas
+                  para
+                  escolares entre 09 e 15 anos, do município de Campinas/SP</strong></h2>
+                <img src="/assets/video.png" alt="imagem com uma praia, letras e rosto de um anciao"
+                     style="border-radius: 5px; width: 95%">
+              </div>
             </div>
+
+            <div class="options_page">
+              <div class="d-flex justify-content-center" style="margin: 35px 0 0 40px">
+                <a
+                  class="btn text-white p-1 px-3 d-flex justify-content-center align-items-center m-1"
+                  style="background-color: #ed7839"><img src="/assets/download.png"
+                                                         alt="seta para baixo / download"><strong>
+                  Download</strong>
+                </a>
+                <a
+                  class="btn text-white p-1 px-3 d-flex justify-content-center align-items-center m-1"
+                  style="background-color: #ed7839"><img src="/assets/favorite.png"
+                                                         alt="estrela branca"></a>
+                <a
+                  class="btn text-white p-1 px-3 d-flex justify-content-center align-items-center m-1"
+                  style="background-color: #ed7839"><img src="/assets/doi.png"
+                                                         alt="imagem escrita doi"></a>
+              </div>
+              <div class="d-flex justify-content-center" style="margin: 10px 0 10px 85px">
+                <a href="#" style="color: #ed7839; text-decoration: none"><strong>COMO CITAR ESSE
+                  TRABALHO?</strong></a>
+              </div>
+              <div class="d-flex justify-content-center">
+                <table class="table" style="width: 250px;">
+                  <thead>
+                  <tr>
+                    <th class="h3"
+                        style="background-color: #fdf1eb; color: #4e4e4e; padding-left: 15px">
+                      Detalhes
+                    </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <ul
+                      style="list-style: none; overflow: auto; max-height: 590px; border: 1px solid #e7e7e7; min-width: 320px; border-radius: 0 0 5px 5px;"
+                      class="p-3 mq-1-2">
+                      <li class="dark_text">Tipo de Apresentação: <strong>Pôster</strong></li>
+                      <li class="dark_text">Eixo temático: <strong>Alimentação e saúde
+                        (AS)</strong></li>
+                      <li class="dark_text">Palavras-chaves: <strong>Alimentos funcionais,
+                        alimenta ao escolar.</strong>
+                      </li>
+                      <li><br></li>
+                      <li class="dark_text"><strong>Autores</strong></li>
+                      <li class="dark_text">Galileo Galilei¹</li>
+                      <li class="dark_text">Berta Lange de Morretes²</li>
+                      <li class="dark_text">Isaac Newton³</li>
+                      <li class="dark_text">Cesar Lattes⁴</li>
+                      <li class="dark_text">Stephen Hawking⁵</li>
+                      <li><br></li>
+                      <li><br></li>
+                      <li style="color: #c2b8b8">¹Universidade Estadual de Campinas</li>
+                      <li style="color: #c2b8b8">²Universidade cie São Paulo</li>
+                      <li style="color: #c2b8b8">³Instituto Nacional de Pesquisas Espaciais</li>
+                      <li style="color: #c2b8b8">⁴Universidade Federal do Rio de Janeiro</li>
+                      <li><br></li>
+                      <li><br></li>
+                      <li><br></li>
+                      <li><br></li>
+                      <li><br></li>
+                      <li><br></li>
+                      <li><br></li>
+                    </ul>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
 
         </div>
 
-        <div class="d-flex flex-column">
+        <div class="about_container">
+          <div>
+            <table class="about">
+              <tr>
+                <th class="h3">
+                  Resumo
+                </th>
+              </tr>
+              <tr>
+                <td class="p-4">
+                  <p>
+                    It is a long established fact that a reader will be distracted by the readable
+                    content of a page
+                    when
+                    looking at its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here',
+                    making it look like
+                    readable English. Many desktop publishing packages and web page editors now use
+                    Lorem Ipsum as their
+                    default model text, and a search for 'lorem ipsum' will uncover many web sites
+                    still in their
+                    infancy.
+                    Various versions have evolved over the years, sometimes by accident, sometimes
+                    on purpose (injected
+                    humour and the like).It is a long established fact that a reader will be
+                    distracted by the readable
+                    content of a page when looking at its layout. The point of using Lorem Ipsum is
+                    that it has a
+                    more-or-less normal distribution of letters, as opposed to using 'Content here,
+                    content here',
+                    making
+                    it look like readable English. Many desktop publishing packages and web page
+                    editors now use Lorem
+                    Ipsum as their default model text, and a search for 'lorem ipsum' will uncover
+                    many web sites still
+                    in
+                    their infancy. Various versions have evolved over the years, sometimes by
+                    accident, sometimes on
+                    purpose (injected humour and the like).
+                    <a class="btn-show-more btn"
+                       [ngClass]="{'show_less': adicionarClasse}"
+                       (click)="toggleClasse()" #viewmore>ver mais...
+                    </a>
+                  </p>
+                  <p [ngClass]="{'show_less': removerClasse}"><br>Contrary to popular belief, Lorem
+                    Ipsum is not simply
+                    random
+                    text. It has roots in a piece of classical Latin literature from 45 BC, making
+                    it over 2000 years
+                    old.
+                    Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+                    looked up one of the
+                    more
+                    obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through
+                    the cites of the
+                    word
+                    in classical literature, discovered the undoubtable source. Lorem Ipsum comes
+                    from sections 1.10.32
+                    and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
+                    by Cicero, written in
+                    45 BC. This book is a treatise on the theory of ethics, very popular during the
+                    Renaissance. The
+                    first
+                    line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
+                    section 1.10.32.
 
+                    The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
+                    those interested.
+                    Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
+                    also reproduced in
+                    their exact original form, accompanied by English versions from the 1914
+                    translation by H.
+                    Rackham.
+                    <br><br>It is a long established fact that a reader will be distracted by the
+                    readable content of a
+                    page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a
+                    more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here',
+                    making it look like
+                    readable English. Many desktop publishing packages and web page editors now use
+                    Lorem Ipsum as their
+                    default model text, and a search for 'lorem ipsum' will uncover many web sites
+                    still in their
+                    infancy.
+                    Various versions have evolved over the years, sometimes by accident, sometimes
+                    on purpose (injected
+                    humour and the like).It is a long established fact that a reader will be
+                    distracted by the readable
+                    content of a page when looking at its layout. The point of using Lorem Ipsum is
+                    that it has a
+                    more-or-less normal distribution of letters, as opposed to using 'Content here,
+                    content here',
+                    making
+                    it look like readable English. Many desktop publishing packages and web page
+                    editors now use Lorem
+                    Ipsum as their default model text, and a search for 'lorem ipsum' will uncover
+                    many web sites still
+                    in
+                    their infancy. Various versions have evolved over the years, sometimes by
+                    accident, sometimes on
+                    purpose (injected humour and the like).
+                    <a [ngClass]="{'show_less': removerClasse}"
+                       (click)="toggleClasse()" #view_less class="btn-show-less btn">Ver
+                      menos...
+                    </a>
+                  </p>
 
-            <div class="my_header">
+                </td>
+              </tr>
+            </table>
+          </div>
 
-                <div class="header_elements">
-                    <div>
-                        <ul class="list-inline">
-                            <li class="mt-1">Anais do Simpósio Latino Americano de Ciências de Alimentos</li>
-                            <li class="h2">Anais do 13 Simpósio Latino Americano de Ciência de Alimentos</li>
-                            <li class="negative">ISSN: 1234-5678</li>
-                        </ul>
+        </div>
 
-                    </div>
-
-                    <div class="idioma">
-                        <div class="dropdown">
-                            <a
-                                    class="btn btn-outline-dark dropdown-toggle p-2 px-3 d-flex justify-content-center align-items-center"
-                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="/assets/language.png" width="24">{{ linkText  }}
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" #myLink href="#" (click)="changeText1()">PT, BR</a></li>
-                                <li><a class="dropdown-item" #myLink href="#" (click)="changeText2()">EN, US</a></li>
-                                <li><a class="dropdown-item" #myLink href="#" (click)="changeText3()">ES, ES</a></li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="login">
-                        <a  style="margin-right: 50px; padding: 0" data-bs-toggle="modal"
-                                data-bs-target="#exampleModal" class="btn">
-                            Login <img ngSrc="/assets/login.png" alt="login" height="30" width="30">
-                        </a>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                             aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content w-75">
-                                    <div class="modal-header">
-                                        <a  class="btn-close p-4" data-bs-dismiss="modal"
-                                                aria-label="Close"></a>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action=""
-                                              class="d-flex justify-content-center align-items-center flex-column">
-                                            <div class="my-3 mt-5 w-75">
-                                                <input type="text" id="user" placeholder="Email" class="w-100">
-                                            </div>
-                                            <div class="my-3 w-75">
-                                                <input type="text" id="password" placeholder="Password" class="w-100">
-
-                                            </div>
-                                            <div class="my-3 w-75">
-                                                <a  class="my-button text-white">Login
-                                                </a>
-                                            </div>
-
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="d-flex flex-column">
-
-                <div class="video_container">
-
-                    <div class="video_screen">
-
-                        <div class="page_title">
-                            <div>
-                                <h2 class="h2 my-4" style="color: #ed7839"><strong>Análise sensorial de preparações
-                                    funcionais
-                                    desenvolvidas
-                                    para
-                                    escolares entre 09 e 15 anos, do município de Campinas/SP</strong></h2>
-                                <img src="/assets/video.png" alt="imagem com uma praia, letras e rosto de um anciao"
-                                     style="border-radius: 5px; width: 95%;">
-                            </div>
-                        </div>
-
-                        <div class="options_page">
-                            <div class="d-flex justify-content-center" style="margin: 35px 0 0 40px">
-                                <a
-                                        class="btn text-white p-1 px-3 d-flex justify-content-center align-items-center m-1"
-                                        style="background-color: #ed7839"><img src="/assets/download.png"
-                                                                               alt="seta para baixo / download"><strong>
-                                    Download</strong>
-                                </a>
-                                <a
-                                        class="btn text-white p-1 px-3 d-flex justify-content-center align-items-center m-1"
-                                        style="background-color: #ed7839"><img src="/assets/favorite.png"
-                                                                               alt="estrela branca"></a>
-                                <a
-                                        class="btn text-white p-1 px-3 d-flex justify-content-center align-items-center m-1"
-                                        style="background-color: #ed7839"><img src="/assets/doi.png"
-                                                                               alt="imagem escrita doi"></a>
-                            </div>
-                            <div class="d-flex justify-content-center" style="margin: 10px 0 10px 85px">
-                                <a href="#" style="color: #ed7839; text-decoration: none"><strong>COMO CITAR ESSE
-                                    TRABALHO?</strong></a>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <table class="table" style="width: 250px;">
-                                    <thead>
-                                    <tr>
-                                        <th class="h3"
-                                            style="background-color: #fdf1eb; color: #4e4e4e; padding-left: 15px">
-                                            Detalhes
-                                        </th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <ul
-                                                style="list-style: none; overflow: auto; max-height: 550px; border: 1px solid #e7e7e7; min-width: 320px; border-radius: 0 0 5px 5px;"
-                                                class="p-3">
-                                            <li class="dark_text">Tipo de Apresentação: <strong>Pôster</strong></li>
-                                            <li class="dark_text">Eixo temático: <strong>Alimentação e saúde
-                                                (AS)</strong></li>
-                                            <li class="dark_text">Palavras-chaves: <strong>Alimentos funcionais,
-                                                alimenta ao escolar.</strong>
-                                            </li>
-                                            <li><br></li>
-                                            <li class="dark_text"><strong>Autores</strong></li>
-                                            <li class="dark_text">Galileo Galilei¹</li>
-                                            <li class="dark_text">Berta Lange de Morretes²</li>
-                                            <li class="dark_text">Isaac Newton³</li>
-                                            <li class="dark_text">Cesar Lattes⁴</li>
-                                            <li class="dark_text">Stephen Hawking⁵</li>
-                                            <li><br></li>
-                                            <li><br></li>
-                                            <li style="color: #c2b8b8">¹Universidade Estadual de Campinas</li>
-                                            <li style="color: #c2b8b8">²Universidade cie São Paulo</li>
-                                            <li style="color: #c2b8b8">³Instituto Nacional de Pesquisas Espaciais</li>
-                                            <li style="color: #c2b8b8">⁴Universidade Federal do Rio de Janeiro</li>
-                                            <li><br></li>
-                                            <li><br></li>
-                                            <li><br></li>
-                                            <li><br></li>
-                                            <li><br></li>
-                                            <li><br></li>
-                                            <li><br></li>
-                                        </ul>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="about_container">
-                    <div>
-                        <table class="about">
-                            <tr>
-                                <th class="h3">
-                                    Resumo
-                                </th>
-                            </tr>
-                            <tr>
-                                <td class="p-4">
-                                    <p>
-                                        It is a long established fact that a reader will be distracted by the readable
-                                        content of a page
-                                        when
-                                        looking at its layout. The point of using Lorem Ipsum is that it has a
-                                        more-or-less normal
-                                        distribution of letters, as opposed to using 'Content here, content here',
-                                        making it look like
-                                        readable English. Many desktop publishing packages and web page editors now use
-                                        Lorem Ipsum as their
-                                        default model text, and a search for 'lorem ipsum' will uncover many web sites
-                                        still in their
-                                        infancy.
-                                        Various versions have evolved over the years, sometimes by accident, sometimes
-                                        on purpose (injected
-                                        humour and the like).It is a long established fact that a reader will be
-                                        distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                        that it has a
-                                        more-or-less normal distribution of letters, as opposed to using 'Content here,
-                                        content here',
-                                        making
-                                        it look like readable English. Many desktop publishing packages and web page
-                                        editors now use Lorem
-                                        Ipsum as their default model text, and a search for 'lorem ipsum' will uncover
-                                        many web sites still
-                                        in
-                                        their infancy. Various versions have evolved over the years, sometimes by
-                                        accident, sometimes on
-                                        purpose (injected humour and the like).
-                                        <a class="btn-show-more btn"
-                                                [ngClass]="{'show_less': adicionarClasse}"
-                                                (click)="toggleClasse()" #viewmore>ver mais...
-                                        </a>
-                                    </p>
-                                    <p [ngClass]="{'show_less': removerClasse}"><br>Contrary to popular belief, Lorem
-                                        Ipsum is not simply
-                                        random
-                                        text. It has roots in a piece of classical Latin literature from 45 BC, making
-                                        it over 2000 years
-                                        old.
-                                        Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
-                                        looked up one of the
-                                        more
-                                        obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through
-                                        the cites of the
-                                        word
-                                        in classical literature, discovered the undoubtable source. Lorem Ipsum comes
-                                        from sections 1.10.32
-                                        and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil)
-                                        by Cicero, written in
-                                        45 BC. This book is a treatise on the theory of ethics, very popular during the
-                                        Renaissance. The
-                                        first
-                                        line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-                                        section 1.10.32.
-
-                                        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for
-                                        those interested.
-                                        Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are
-                                        also reproduced in
-                                        their exact original form, accompanied by English versions from the 1914
-                                        translation by H.
-                                        Rackham.
-                                        <br><br>It is a long established fact that a reader will be distracted by the
-                                        readable content of a
-                                        page
-                                        when looking at its layout. The point of using Lorem Ipsum is that it has a
-                                        more-or-less normal
-                                        distribution of letters, as opposed to using 'Content here, content here',
-                                        making it look like
-                                        readable English. Many desktop publishing packages and web page editors now use
-                                        Lorem Ipsum as their
-                                        default model text, and a search for 'lorem ipsum' will uncover many web sites
-                                        still in their
-                                        infancy.
-                                        Various versions have evolved over the years, sometimes by accident, sometimes
-                                        on purpose (injected
-                                        humour and the like).It is a long established fact that a reader will be
-                                        distracted by the readable
-                                        content of a page when looking at its layout. The point of using Lorem Ipsum is
-                                        that it has a
-                                        more-or-less normal distribution of letters, as opposed to using 'Content here,
-                                        content here',
-                                        making
-                                        it look like readable English. Many desktop publishing packages and web page
-                                        editors now use Lorem
-                                        Ipsum as their default model text, and a search for 'lorem ipsum' will uncover
-                                        many web sites still
-                                        in
-                                        their infancy. Various versions have evolved over the years, sometimes by
-                                        accident, sometimes on
-                                        purpose (injected humour and the like).
-                                        <a [ngClass]="{'show_less': removerClasse}"
-                                                (click)="toggleClasse()" #view_less class="btn-show-less btn">Ver
-                                            menos...
-                                        </a>
-                                    </p>
-
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-
-                </div>
-
-                <div class="topics_container">
-                    <div>
-                        <table class="topics_table">
-                            <tr>
-                                <th class="h3">Discussões</th>
-                            </tr>
-                            <tr class="d-flex flex-column align-items-center"
-                                [ngClass]="{'form_hidden': hidden_topic_button}">
-                                <td style="color: #ed7839" class="h4 my-3"><strong>Compartilhe suas ideias ou dúvidas
-                                    com os
-                                    autores!</strong></td>
-                                <td class="my-3"><img src="https://layout-artigos.vercel.app/imagem/icone-1.svg" alt=""
-                                                      class="mx-3"><img
-                                        src="https://layout-artigos.vercel.app/imagem/icone-2.svg"
-                                        alt="" class="mx-3"><img
-                                        src="https://layout-artigos.vercel.app/imagem/icone-3.svg" alt="" class="mx-3">
-                                </td>
-                                <td class="my3" style="color: #838383; text-align: center">Sabia que o maior estímulo no
-                                    desenvolvimento
-                                    científico e cultural é a curiosidade? Deixe seus
-                                    questionamentos ou sugestões para o autor!
-                                </td>
-                                <td style="width: 95%;border: 1px solid #f3f3f3;" class="my-5"></td>
-                                <td style="margin-top: -125px;">
-                                    <a  class="btn text-white btn-create-topic"
-                                            style="background-color: #f89f4b; margin-top: 50px; box-shadow: 5px 5px 5px 5px #bebebe; padding: 0 10px 0px 10px"
-                                            (click)="createTopic()" #createtopic>
+        <div class="topics_container">
+          <div>
+            <table class="topics_table">
+              <tr>
+                <th class="h3">Discussões</th>
+              </tr>
+              <tr class="d-flex flex-column align-items-center"
+                  [ngClass]="{'form_hidden': hidden_topic_button}">
+                <td style="color: #ed7839" class="h4 my-3"><strong>Compartilhe suas ideias ou dúvidas
+                  com os
+                  autores!</strong></td>
+                <td class="my-3"><img src="https://layout-artigos.vercel.app/imagem/icone-1.svg" alt=""
+                                      class="mx-3"><img
+                  src="https://layout-artigos.vercel.app/imagem/icone-2.svg"
+                  alt="" class="mx-3"><img
+                  src="https://layout-artigos.vercel.app/imagem/icone-3.svg" alt="" class="mx-3">
+                </td>
+                <td class="my3" style="color: #838383; text-align: center">Sabia que o maior estímulo no
+                  desenvolvimento
+                  científico e cultural é a curiosidade? Deixe seus
+                  questionamentos ou sugestões para o autor!
+                </td>
+                <td style="width: 95%;border: 1px solid #f3f3f3;" class="my-5"></td>
+                <td style="margin-top: -125px;">
+                  <a class="btn text-white btn-create-topic"
+                     style="background-color: #f89f4b; margin-top: 50px; box-shadow: 5px 5px 5px 5px #bebebe; padding: 0 10px 0px 10px"
+                     (click)="createTopic()" #createtopic>
                 <span class="d-flex justify-content-center align-items-center">
                   <span style="font-size: 30px"><strong>+</strong></span>
                   <span style="font-size: 14px; margin-left: 7px">criar tópico</span>
                 </span>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="d-flex flex-column" [ngClass]="{'form_hidden': exibirFormulario}">
-                                <td style="text-align: center; color: #858585" class="my-3">
-                                    Tem uma dúvida ou sugestão? Compartilhe seu feedback com
-                                    os autores!
-                                </td>
-                                <td>
-                                    <form class="p-3">
+                  </a>
+                </td>
+              </tr>
+              <tr class="d-flex flex-column" [ngClass]="{'form_hidden': exibirFormulario}">
+                <td style="text-align: center; color: #858585" class="my-3">
+                  Tem uma dúvida ou sugestão? Compartilhe seu feedback com
+                  os autores!
+                </td>
+                <td>
+                  <form class="p-3">
 
-                                        <label for="assunto" class="form-label"
-                                               style="color: #ed7839"><strong class="w-75">Assunto</strong></label>
-                                        <input type="text" class="subject form-control"
-                                               style="min-width: 100%; border-color: #cccccc; height: 40px;"
-                                               placeholder="Defina um tópico sucinto para notificar os autores..."
-                                               id="assunto">
-                                        <div class="d-flex flex-column">
-                                            <label for="text_area" class="form-label"
-                                                   style="color: #ed7839"><strong>Conteúdo</strong></label>
-                                            <textarea style="resize: none; height: 150px; border-color: #cccccc;"
-                                                      id="text_area"></textarea>
+                    <label for="assunto" class="form-label"
+                           style="color: #ed7839"><strong class="w-75">Assunto</strong></label>
+                    <input type="text" class="subject form-control"
+                           style="min-width: 100%; border-color: #cccccc; height: 40px;"
+                           placeholder="Defina um tópico sucinto para notificar os autores..."
+                           id="assunto">
+                    <div class="d-flex flex-column">
+                      <label for="text_area" class="form-label"
+                             style="color: #ed7839"><strong>Conteúdo</strong></label>
+                      <textarea style="resize: none; height: 150px; border-color: #cccccc;"
+                                id="text_area"></textarea>
 
 
-                                            <span class="d-flex justify-content-end"
-                                                  style="background-color: #eaf1f2; border: 1px solid #cccccc; border-top: 0;">
+                      <span class="d-flex justify-content-end"
+                            style="background-color: #eaf1f2; border: 1px solid #cccccc; border-top: 0;">
                        <button type="button" class="text-white"
                                style="background-color: #f89a49; padding: 3px 100px 3px 100px; border: none;"
                                (click)="Submit()"><strong>Enviar</strong></button>
                     </span>
-                                        </div>
+                    </div>
 
-                                    </form>
-                                </td>
-                                <td style="width: 95%;border: 1px solid #f3f3f3;" class="my-2 mx-4"></td>
-                            </tr>
+                  </form>
+                </td>
+                <td style="width: 95%;border: 1px solid #f3f3f3;" class="my-2 mx-4"></td>
+              </tr>
 
-                            <tr class="d-flex flex-column align-items-center "
-                                [ngClass]="{'sucess-message': sucessMessage}">
-                                <td style="color: #ed7839" class="h4 my-3"><strong>Seu tópico foi enviado com sucesso!
-                                    :D</strong></td>
-                                <td style="color: #838383;" class="my-2">Agradecemos por sua contribuição, uma
-                                    notificação será enviada ao seu email assim que seu tópico for respondido!
-                                </td>
-                                <td class="my-4"><a href="#" style="color: #ed7839;">Descubra outros trabalhos!</a></td>
-                                <td style="width: 95%;border: 1px solid #f3f3f3;" class="my-5"></td>
-                                <td style="margin-top: -125px;">
-                                    <a  class="btn text-white"
-                                            style="background-color: #f89f4b; margin-top: 50px; box-shadow: 5px 5px 5px 5px #bebebe; padding: 0 10px 0px 10px"
-                                            (click)="createNewTopic()">
+              <tr class="d-flex flex-column align-items-center "
+                  [ngClass]="{'sucess-message': sucessMessage}">
+                <td style="color: #ed7839" class="h4 my-3"><strong>Seu tópico foi enviado com sucesso!
+                  :D</strong></td>
+                <td style="color: #838383;" class="my-2">Agradecemos por sua contribuição, uma
+                  notificação será enviada ao seu email assim que seu tópico for respondido!
+                </td>
+                <td class="my-4"><a href="#" style="color: #ed7839;">Descubra outros trabalhos!</a></td>
+                <td style="width: 95%;border: 1px solid #f3f3f3;" class="my-5"></td>
+                <td style="margin-top: -125px;">
+                  <a class="btn text-white"
+                     style="background-color: #f89f4b; margin-top: 50px; box-shadow: 5px 5px 5px 5px #bebebe; padding: 0 10px 0px 10px"
+                     (click)="createNewTopic()">
                 <span class="d-flex justify-content-center align-items-center">
                   <span style="font-size: 30px"><strong>+</strong></span>
                   <span style="font-size: 14px; margin-left: 7px">criar novo topico</span>
                 </span>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr [ngClass]="{'feedBack': feedBack}" class="card d-flex justify-content-center align-items-center">
-                                    <td class="card-body">
-                                        Aguardando feedback dos autores
-                                    </td>
-                            </tr>
+                  </a>
+                </td>
+              </tr>
+              <tr [ngClass]="{'feedBack': feedBack}"
+                  class="card p-4 m-3 feedback_await position-relative">
+                <td><strong>Assunto da pergunta aparece aqui</strong></td>
+                <td>Carlos Henrique Santos</td>
+                <td>Comecinho da pergunta aparece aqui resente relato inscreve-se no campo da análise da dimensão e
+                  impacto de processo formativo situado impacto
+                  de processo formativo processo...
+                  <span class="feedback-message">
+                    <img src="/assets/okay2.png" alt="imagem com simbolo de verificado">
+                    <p>Aguardando feedback dos autores</p>
+                    <a href="#">Editar tópico</a>
+                  </span>
+                </td>
+              </tr>
 
-                        </table>
+              <tr class="card p-4 m-3">
+                <td><strong>Assunto da pergunta aparece aqui</strong></td>
+                <td>Carlos Henrique Santos</td>
+                <td>Comecinho da pergunta aparece aqui resente relato inscreve-se no campo da análise da dimensão e
+                  impacto de processo formativo situado impacto
+                  de processo formativo processo...
+                </td>
+                <td class="d-flex align-items-center">
+                  <div class="d-flex flex-column options_click"><span>.</span><span>.</span><span>.</span></div>
+                  <div (click)="toggleClicked()" class="emoji" [innerHTML]="isClicked ? '❤️' : '🤍'"></div>
+                  1 like 1 resposta
+                </td>
+              </tr>
+
+              <tr class="card p-4 m-3 answered-topic ops-topic-subject" [ngClass]="{'expandeClass': expandBool2}">
+
+                <td><strong>Assunto da pergunta aparece aqui</strong></td>
+                <td>Carlos Henrique Santos</td>
+                <td class="answered-topic ops-topic-subject" (click)="expandFun()">
+                  Comecinho da pergunta aparece aqui resente relato
+                  inscreve-se no campo da análise da dimensão e
+                  impacto de processo formativo situado impacto
+                  de processo formativo processo...
+                </td>
+                <td class="d-flex align-items-center">
+                  <div class="d-flex flex-column options_click"><span>.</span><span>.</span><span>.</span></div>
+                  <div (click)="toggleClicked2()" class="emoji" [innerHTML]="isClicked2 ? '❤️' : '🤍'"></div>
+                  1 like 1 resposta
+                </td>
+              </tr>
+
+
+              <tr class="card m-3 p-4 comments-container"
+                  [ngClass]="{'expandeClass': expandBool}" style="border-radius: 5px 5px 0 0">
+                <td><strong>Assunto da pergunta aparece aqui</strong></td>
+                <td>Carlos Henrique Santos</td>
+                <td (click)="expandFun()">Comecinho da pergunta aparece aqui resente relato inscreve-se no campo da
+                  análise da dimensão e
+                  impacto de processo formativo situado impacto
+                  de processo formativo processo resente relato inscreve-se no campo da análise da dimensão e impacto
+                  de processo formativo situado impacto de
+                  processo formativo processo?
+                </td>
+                <td class="d-flex align-items-center">
+                  <div class="d-flex flex-column options_click"><span>.</span><span>.</span><span>.</span></div>
+                  <div (click)="toggleClicked2()" class="emoji" [innerHTML]="isClicked2 ? '❤️' : '🤍'"></div>
+                  4 like 4 resposta
+                </td>
+              </tr>
+              <tr class="card m-3 p-4 comments-container" style="border-radius: 0; background-color: #f8f8f8"
+                  [ngClass]="{'expandeClass': expandBool}">
+                <td class="d-flex justify-content-between">
+                  <div>
+                    <p style="font-size: 14px; color: #5c5c5c"><strong>Adriano da Silva</strong></p>
+                  </div>
+                  <div>
+                    <div class="d-flex">
+                      <p class="h6"><strong>Autor</strong></p>
+                      <img src="/assets/okay.png" alt="simbolo de verificado" style="margin-left: 30px">
                     </div>
-                </div>
-            </div>
+                  </div>
+                </td>
+                <td class="text2">Resposta do autor é aqui. Relato inscreve-se no campo da análise da dimensdo e impacto
+                  de processo
+                  formativo situado impacto de processo
+                  formativo processo resente relato inscreve-se no campo dc análise dc dimensdo e impacto de processo
+                  formativo situado impacto de processo
+                  formativo processo.
+                </td>
+              </tr>
+              <tr class="card m-3 p-4 comments-container" style="border-radius: 0; background-color: #ffffff"
+                  [ngClass]="{'expandeClass': expandBool}">
+                <td class="text1" style="margin-bottom: 5px">
+                  Carlos Henrique Santos
+                </td>
+                <td class="text2">
+                  Consegui entender melhor agora! Parece que a variacâo da análise da dimensão e impacto de processo
+                  formativo situado impacto de processo formativo.
+                </td>
+                <td class="text2">
+                  Obrigada pela resposta, muito interessante o seu trabalho!
+                </td>
+              </tr>
+              <tr class="card m-3 p-4 comments-container" style="border-radius: 0; background-color: #f8f8f8"
+                  [ngClass]="{'expandeClass': expandBool}">
+                <td class="d-flex justify-content-between">
+                  <div>
+                    <p style="font-size: 14px; color: #5c5c5c"><strong>Carmila Ferreira Andrade</strong></p>
+                  </div>
+                  <div>
+                    <div class="d-flex">
+                      <p class="h6"><strong>Coautor</strong></p>
+                      <img src="/assets/okay.png" alt="simbolo de verificado" style="margin-left: 30px">
+                    </div>
+                  </div>
+                </td>
+                <td class="text2">Também interessante lembrar que o relato inscreve-se no campo da análise da dimensão e
+                  impacto de
+                  processo formativo situado impacto de
+                  processo formativo processo resente relato inscreve-se no campo da análise da dimensão e impacto de
+                  processo formativo situado impacto de
+                  processo formativo processo.
+                </td>
+                <td class="text2">
+                  Situado impacto de processo formativo processo resente relato inscreve-se no campo da análise da
+                  dimensão e impacto de processo formativo
+                  situado impacto de processo formativo processo.
+                </td>
+              </tr>
+              <tr class="card m-3 p-4" style="border-radius: 0 0 5px 5px; background-color: #f8f8f8"
+                  [ngClass]="{'expandeClass': expandBool}">
+                <td class="d-flex justify-content-between">
+                  <div>
+                    <p style="font-size: 14px; color: #5c5c5c"><strong>Ana Carolina</strong></p>
+                  </div>
+                  <div>
+                    <div class="d-flex">
+                      <p class="h6"><strong>Coautor</strong></p>
+                      <img src="/assets/okay.png" alt="simbolo de verificado" style="margin-left: 30px">
+                    </div>
+                  </div>
+                </td>
+                <td class="text2">Resposta do autor é aqui. Relato inscreve-se no campo da análise da dimensão e impacto
+                  de processo formativo situado impacto de processo
+                  formativo processo resente relato inscreve-se no campo da análise da dimensão e impacto de processo
+                  formativo situado impacto de processo
+                  formativo processo.
+                </td>
+              </tr>
+
+
+            </table>
+
+
+          </div>
 
         </div>
-
+        <div class="footer">
+          <ul class="d-flex">
+            <li style="width: 300px" class="logo_footer">
+              <img src="/assets/icon_galoa.png" alt="imagem com logo galoa" class="icon_logo_footer" >
+            </li>
+            <li class="footer_text">
+              <p><strong>Preservar a memória do evento e ampliar o acesso ao conhecimento científico</strong> gerado em eventos é a razôo de ser da
+                plataforma Galoá Proceedings.</p>
+              <p>Os trabalhos publicados aqui têm maior alcance e ficam disponíveis para toda a comunidade científica, mantendo aceso o
+                debate científico fomentado pelos encontros e aumentando o impacto do evento.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
