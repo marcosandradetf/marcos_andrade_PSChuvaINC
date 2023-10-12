@@ -34,3 +34,5 @@ Thumbs.db
 
 # Screenshots
 ts/cypress/screenshots
+
+php/.idea
