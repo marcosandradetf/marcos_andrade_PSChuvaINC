@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 void main() {
   runApp(const ChuvaDart());
@@ -13,7 +14,7 @@ class ChuvaDart extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF456189)),
         useMaterial3: true,
       ),
       home: const Calendar(),
@@ -40,11 +41,102 @@ class _CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double desiredSpacingPercentage = 6;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Chuva ❤️ Flutter'),
-      ),
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          title: null,
+          bottom: PreferredSize(
+            preferredSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.1),
+            child: Column(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.height * 0.001,
+                  alignment: Alignment.topLeft,
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+                  child: const Icon(
+                    Icons.arrow_back_ios,
+                    color: Colors.white,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      "Chuva ",
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Icon(
+                      MdiIcons.heart,
+                      color: const Color(0xFFB53FF5),
+                    ),
+                    const Text(
+                      " Flutter",
+                      style: TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const Text(
+                  "Programação",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+                Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: const BorderSide(
+                          color: Colors.white,
+                          width: 1,
+                        )),
+                    child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Card(
+                              color: const Color(0xFF306DC3),
+                              elevation: 4,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
+                                  child: const Icon(
+                                    Icons.calendar_month_outlined,
+                                  )),
+                            ),
+                            Container(
+                              width: MediaQuery.of(context).size.width * 0.7,
+                              alignment: Alignment.center,
+                              child: const Text(
+                                "Exibindo todas atividades",
+                                style: TextStyle(
+                                  fontSize: 13,
+                                ),
+                              ),
+                            )
+                          ],
+                        ))),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 4.0),
+                )
+              ],
+            ),
+          )),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
