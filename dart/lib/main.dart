@@ -48,7 +48,8 @@ class _CalendarState extends State<Calendar> {
           backgroundColor: Theme.of(context).colorScheme.primary,
           title: null,
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.1),
+            preferredSize:
+                Size.fromHeight(MediaQuery.of(context).size.height * 0.1),
             child: Column(
               children: [
                 Container(
@@ -139,33 +140,53 @@ class _CalendarState extends State<Calendar> {
           )),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const Text(
-              'Programação',
-            ),
-            const Text(
-              'Nov',
-            ),
-            const Text(
-              '2023',
-            ),
-            OutlinedButton(
-              onPressed: () {
-                _changeDate(DateTime(2023, 11, 26));
-              },
-              child: Text(
-                '26',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ),
-            OutlinedButton(
-              onPressed: () {
-                _changeDate(DateTime(2023, 11, 28));
-              },
-              child: Text(
-                '28',
-                style: Theme.of(context).textTheme.headlineMedium,
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 1),
+              color: const Color(0xFF306DC3),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(2),
+                    color: Colors.white,
+                    child: const Column(
+                      children: [
+                        Text(
+                          'Nov',
+                          style: TextStyle(fontSize: 16),
+                        ),
+                        Text(
+                          '2023',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      for (int day = 26; day <= 30; day++)
+                        Container(
+                          constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * .1135), // Defina a largura mínima desejada
+                          child: TextButton(
+                            onPressed: () {
+                              _changeDate(DateTime(2023, 11, day));
+                            },
+                            child: Text(
+                              day.toString(),
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: Colors.white,
+                                fontWeight: _currentDate.day == day ? FontWeight.bold : FontWeight.normal,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  )
+
+                ],
               ),
             ),
             if (_currentDate.day == 26)
