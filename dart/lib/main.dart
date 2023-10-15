@@ -252,9 +252,11 @@ class _CalendarState extends State<Calendar> {
 
 ////////////////
 class Activity extends StatefulWidget {
-  final event;
+  dynamic event;
+  dynamic myColor;
+  int clickedID;
 
-  const Activity({super.key, required this.event});
+  Activity({super.key, required this.event, required this.myColor, required this.clickedID});
 
   @override
   State<Activity> createState() => _ActivityState();
@@ -266,51 +268,104 @@ class _ActivityState extends State<Activity> {
   @override
   Widget build(BuildContext context) {
     final event = widget.event;
-    if (kDebugMode) {
-      print(event.picture);
-    }
-    if (event.id == 8921 ||
-        event.id == 8922 ||
-        event.id == 8924 ||
-        event.id == 8925) {
+    final myColor = widget.myColor;
+    int clickedID = widget.clickedID;
+
+    if (event.id == clickedID) {
       return Column(children: [
         Column(
           children: [
             Container(
-              child: Row(
-                children: [Text(event.category)],
-              ),
-            ),
-            Container(
-              child: Text(event.title),
-            ),
-            Container(
+              padding: const EdgeInsets.all(5),
+              color: myColor,
               child: Row(
                 children: [
-                  const Icon(
-                    Icons.access_time_outlined,
+                  Text(
+                      event.category,
+                  style: const TextStyle(
+                    color: Colors.white,
                   ),
-                  Text(" ${event.day} ${event.time} - ${event.timeEnd}"),
+                  )
                 ],
               ),
             ),
             Container(
-              child: HtmlWidget(event.description)
-            ),
-            Container(
-              child: CachedNetworkImage(
-                imageUrl: "${event.picture}",
-                placeholder: (context, url) => const CircularProgressIndicator(),
-                errorWidget: (context, url, error) => const Icon(Icons.error),
+              padding: const EdgeInsets.all(10),
+              width: MediaQuery.of(context).size.width * .8,
+              child: Text(
+                  event.title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
               ),
             ),
             Container(
               child:
-              Row(children: [
-                Row(children: [Text(event.personName)],),
-                Row(children: [Text(event.institution)],)
-              ],)
+                  Column(
+                    children: [
+                      Row(children: [
+                        const Icon(
+                          Icons.access_time_outlined,
+                          color: Color(0xFF366EC0),
+                        ),
+                        Text(" ${event.day} ${event.time} - ${event.timeEnd}"),
+                      ],),
+                      Row(children: [
+                        const Icon(
+                            Icons.location_on_sharp,
+                          color: Color(0xFF366EC0),
+                        ),
+                        Text(
+                            event.location
+                        ),
+                      ],)
+                    ],
+                  ),
+
             ),
+            ElevatedButton.icon(
+              onPressed: () {
+                setState(() {
+                  _favorited = !_favorited;
+                });
+              },
+              icon: _favorited
+                  ? const Icon(Icons.star)
+                  : const Icon(Icons.star_outline),
+              label: Text(
+                  _favorited ? 'Remover da sua agenda' : 'Adicionar à sua agenda'),
+            ),
+            Container(
+              child: HtmlWidget(event.description)
+            ),
+            Row(
+              children: [
+                Text("Palestrante")
+              ],
+            ),
+            Row(
+              children: [
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: CachedNetworkImage(
+                    imageUrl: "${event.picture}",
+                    placeholder: (context, url) => const CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                    width: 50,
+                  ),
+                ),
+                Column(
+                  children: [
+                    Text(event.personName),
+                    Text(event.institution),
+                  ],
+                ),
+              ],
+            ),
+
+
           ],
         )
       ]);
@@ -489,6 +544,7 @@ class EventData {
 class EventList extends StatefulWidget {
   final List<EventData> events;
   bool clicked;
+  int clickedID = 0;
 
   EventList({super.key, required this.events, required this.clicked});
 
@@ -501,6 +557,7 @@ class _EventListState extends State<EventList> {
   Widget build(BuildContext context) {
     final List<EventData> events = widget.events;
     bool clicked = widget.clicked;
+    int clickedID = widget.clickedID;
 
     Color hexToColor(String hexColor) {
       // Remova o "#" do início da string, se existir
@@ -666,9 +723,8 @@ class _EventListState extends State<EventList> {
                         event.id == 8924 ||
                         event.id == 8925) {
                       setState(() {
-                        setState(() {
+                          widget.clickedID = event.id;
                           widget.clicked = true;
-                        });
                       });
                     }
                   },
@@ -739,7 +795,7 @@ class _EventListState extends State<EventList> {
               ],
             );
           } else {
-            return Activity(event: event);
+            return Activity(event: event, myColor: myColor, clickedID: clickedID,);
           }
         });
   }
