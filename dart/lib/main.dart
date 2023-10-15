@@ -2,10 +2,11 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 void main() {
   initializeDateFormatting('pt_BR', null);
@@ -224,7 +225,7 @@ class _CalendarState extends State<Calendar> {
             ),
             Expanded(
               child: FutureBuilder<List<EventData>?>(
-                future: fetchData26(_currentDate),
+                future: fetchData(_currentDate),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
@@ -232,7 +233,10 @@ class _CalendarState extends State<Calendar> {
                     return Text('Erro: ${snapshot.error}');
                   } else if (snapshot.hasData) {
                     final events = snapshot.data!;
-                    return EventList(events: events);
+                    return EventList(
+                      events: events,
+                      clicked: _clicked,
+                    );
                   } else {
                     return Text('Nenhum dado disponível');
                   }
@@ -248,7 +252,9 @@ class _CalendarState extends State<Calendar> {
 
 ////////////////
 class Activity extends StatefulWidget {
-  const Activity({super.key});
+  final event;
+
+  const Activity({super.key, required this.event});
 
   @override
   State<Activity> createState() => _ActivityState();
@@ -259,41 +265,64 @@ class _ActivityState extends State<Activity> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.inversePrimary,
-      child: Column(children: [
-        Text(
-          'Activity title',
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
-        const Text('A Física dos Buracos Negros Supermassivos'),
-        const Text('Mesa redonda'),
-        const Text('Domingo 07:00h - 08:00h'),
-        const Text('Sthepen William Hawking'),
-        const Text('Maputo'),
-        const Text('Astrofísica e Cosmologia'),
-        ElevatedButton.icon(
-          onPressed: () {
-            setState(() {
-              _favorited = !_favorited;
-            });
-          },
-          icon: _favorited
-              ? const Icon(Icons.star)
-              : const Icon(Icons.star_outline),
-          label: Text(
-              _favorited ? 'Remover da sua agenda' : 'Adicionar à sua agenda'),
+    final event = widget.event;
+    if (kDebugMode) {
+      print(event.picture);
+    }
+    if (event.id == 8921 ||
+        event.id == 8922 ||
+        event.id == 8924 ||
+        event.id == 8925) {
+      return Column(children: [
+        Column(
+          children: [
+            Container(
+              child: Row(
+                children: [Text(event.category)],
+              ),
+            ),
+            Container(
+              child: Text(event.title),
+            ),
+            Container(
+              child: Row(
+                children: [
+                  const Icon(
+                    Icons.access_time_outlined,
+                  ),
+                  Text(" ${event.day} ${event.time} - ${event.timeEnd}"),
+                ],
+              ),
+            ),
+            Container(
+              child: HtmlWidget(event.description)
+            ),
+            Container(
+              child: CachedNetworkImage(
+                imageUrl: "${event.picture}",
+                placeholder: (context, url) => const CircularProgressIndicator(),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ),
+            ),
+            Container(
+              child:
+              Row(children: [
+                Row(children: [Text(event.personName)],),
+                Row(children: [Text(event.institution)],)
+              ],)
+            ),
+          ],
         )
-      ]),
-    );
+      ]);
+    }
+    return Container();
   }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-Future<List<EventData>> fetchData26(DateTime newDate) async {
+Future<List<EventData>> fetchData(DateTime newDate) async {
   DateTime currentDate = newDate;
-  bool clicked = false;
 
   try {
     // Carrega o conteúdo do arquivo JSON local
@@ -348,12 +377,12 @@ Future<List<EventData>> fetchData26(DateTime newDate) async {
       }
 
       if (currentDate.day == 29) {
-        final customOrder = [8963,8964,8965,8966,8968,8970,8969];
+        final customOrder = [8963, 8964, 8965, 8966, 8968, 8970, 8969];
         return inOrderning(customOrder, a, b);
       }
 
       if (currentDate.day == 30) {
-        final customOrder = [8978,8977,8980,8981,8982,8983,8984];
+        final customOrder = [8978, 8977, 8980, 8981, 8982, 8983, 8984];
         return inOrderning(customOrder, a, b);
       }
 
@@ -456,13 +485,23 @@ class EventData {
   }
 }
 
-class EventList extends StatelessWidget {
+//class EventList extends StatelessWidget {
+class EventList extends StatefulWidget {
   final List<EventData> events;
+  bool clicked;
 
-  EventList({required this.events});
+  EventList({super.key, required this.events, required this.clicked});
 
   @override
+  State<EventList> createState() => _EventListState();
+}
+
+class _EventListState extends State<EventList> {
+  @override
   Widget build(BuildContext context) {
+    final List<EventData> events = widget.events;
+    bool clicked = widget.clicked;
+
     Color hexToColor(String hexColor) {
       // Remova o "#" do início da string, se existir
       hexColor = hexColor.replaceAll("#", "");
@@ -487,68 +526,221 @@ class EventList extends StatelessWidget {
         itemBuilder: (context, index) {
           final event = events[index];
           Color myColor = hexToColor(event.color);
-          return Card(
-            elevation: 5,
-            color: myColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Container(
-              constraints: const BoxConstraints(
-                minHeight: 100,
-              ),
-              margin: const EdgeInsets.only(left: 5),
-              decoration: const BoxDecoration(
-                color: Colors.white, // Cor de fundo do container
-                borderRadius: BorderRadius.only(
-                  topRight:
-                      Radius.circular(8), // Arredonda o canto superior direito
-                  bottomRight:
-                      Radius.circular(8), // Arredonda o canto inferior direito
-                ), // Define um raio de 10 para arredondar as bordas
-              ),
-              padding: const EdgeInsets.only(top: 10.0, left: 15.0, bottom: 10),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        '${event.type} de ${event.time} até ${event.timeEnd}',
-                        style: const TextStyle(
-                          fontSize: 13.0,
-                        ),
+          if (clicked == false) {
+            return Stack(
+              children: [
+                if (event.id == 8922)
+                  Card(
+                    margin: const EdgeInsets.only(top: 12, left: 14, right: 14),
+                    elevation: 5,
+                    color: myColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Container(
+                      constraints: const BoxConstraints(
+                        minHeight: 100,
                       ),
-                    ],
-                  ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: Wrap(
-                      children: [
-                        Text(
-                          event.title,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 15.0,
+                      margin: const EdgeInsets.only(left: 5),
+                      decoration: const BoxDecoration(
+                        color: Colors.white, // Cor de fundo do container
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(8),
+                          // Arredonda o canto superior direito
+                          bottomRight: Radius.circular(
+                              8), // Arredonda o canto inferior direito
+                        ), // Define um raio de 10 para arredondar as bordas
+                      ),
+                      padding: const EdgeInsets.only(
+                          top: 10.0, left: 15.0, bottom: 10),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                '${event.type} de ${event.time} até ${event.timeEnd}',
+                                style: const TextStyle(
+                                  fontSize: 13.0,
+                                ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Wrap(
+                              children: [
+                                Text(
+                                  event.title,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                event.personName,
+                                style: const TextStyle(
+                                  color: Color(0xFF7C7C7C),
+                                  fontSize: 14.0,
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        event.personName,
-                        style: const TextStyle(
-                          color: Color(0xFF7C7C7C),
-                          fontSize: 14.0,
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              ),
-            ),
-          );
+                if (event.id == 8922)
+                  Card(
+                    margin: const EdgeInsets.only(top: 8, left: 8, right: 8),
+                    elevation: 5,
+                    color: myColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Container(
+                      constraints: const BoxConstraints(
+                        minHeight: 100,
+                      ),
+                      margin: const EdgeInsets.only(left: 5),
+                      decoration: const BoxDecoration(
+                        color: Colors.white, // Cor de fundo do container
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(8),
+                          // Arredonda o canto superior direito
+                          bottomRight: Radius.circular(
+                              8), // Arredonda o canto inferior direito
+                        ), // Define um raio de 10 para arredondar as bordas
+                      ),
+                      padding: const EdgeInsets.only(
+                          top: 10.0, left: 15.0, bottom: 10),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                '${event.type} de ${event.time} até ${event.timeEnd}',
+                                style: const TextStyle(
+                                  fontSize: 13.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Wrap(
+                              children: [
+                                Text(
+                                  event.title,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                event.personName,
+                                style: const TextStyle(
+                                  color: Color(0xFF7C7C7C),
+                                  fontSize: 14.0,
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                GestureDetector(
+                  onTap: () {
+                    if (event.id == 8921 ||
+                        event.id == 8922 ||
+                        event.id == 8924 ||
+                        event.id == 8925) {
+                      setState(() {
+                        setState(() {
+                          widget.clicked = true;
+                        });
+                      });
+                    }
+                  },
+                  child: Card(
+                    elevation: 5,
+                    color: myColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Container(
+                      constraints: const BoxConstraints(
+                        minHeight: 100,
+                      ),
+                      margin: const EdgeInsets.only(left: 5),
+                      decoration: const BoxDecoration(
+                        color: Colors.white, // Cor de fundo do container
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(8),
+                          // Arredonda o canto superior direito
+                          bottomRight: Radius.circular(
+                              8), // Arredonda o canto inferior direito
+                        ), // Define um raio de 10 para arredondar as bordas
+                      ),
+                      padding: const EdgeInsets.only(
+                          top: 10.0, left: 15.0, bottom: 10),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text(
+                                '${event.type} de ${event.time} até ${event.timeEnd}',
+                                style: const TextStyle(
+                                  fontSize: 13.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Container(
+                            alignment: Alignment.centerLeft,
+                            child: Wrap(
+                              children: [
+                                Text(
+                                  event.title,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                event.personName,
+                                style: const TextStyle(
+                                  color: Color(0xFF7C7C7C),
+                                  fontSize: 14.0,
+                                ),
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            );
+          } else {
+            return Activity(event: event);
+          }
         });
   }
 }
