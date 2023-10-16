@@ -40,6 +40,9 @@ dependencies:
   intl: ^0.18.1
   flutter_widget_from_html_core: ^0.10.6
   cached_network_image: ^3.3.0
+  provider: ^6.0.5
+  flutter_barcode_scanner: ^2.0.0
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:

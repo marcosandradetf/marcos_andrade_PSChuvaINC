@@ -1,16 +1,43 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chuva_dart/appBar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   initializeDateFormatting('pt_BR', null);
-  runApp(const ChuvaDart());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => AppState(),
+      child: const ChuvaDart(),
+    ),
+  );
+}
+
+class AppState extends ChangeNotifier {
+  bool clicked = false;
+
+  void hideElement() {
+    clicked = true;
+    notifyListeners();
+  }
+
+  void showElement() {
+    clicked = false;
+    notifyListeners();
+  }
+
+  int clickedID = 0;
+
+  void updateClickedID(int id) {
+    clickedID = id;
+    notifyListeners();
+  }
 }
 
 class ChuvaDart extends StatelessWidget {
@@ -37,9 +64,9 @@ class Calendar extends StatefulWidget {
   State<Calendar> createState() => _CalendarState();
 }
 
-class _CalendarState extends State<Calendar> {
+class _CalendarState extends State<Calendar>
+    with SingleTickerProviderStateMixin {
   DateTime _currentDate = DateTime(2023, 11, 26);
-  bool _clicked = false;
 
   void _changeDate(DateTime newDate) {
     setState(() {
@@ -49,77 +76,31 @@ class _CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
+    final appState = Provider.of<AppState>(context);
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
 
+    const myAppbar = CustomAppBar();
+
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.primary,
-          title: null,
+          backgroundColor: const Color(0xFF456189),
+          title: myAppbar,
           bottom: PreferredSize(
-            preferredSize: _clicked == false
-                ? Size.fromHeight(screenHeight * 0.075)
-                : Size.fromHeight(screenHeight * 0.01),
+            preferredSize: appState.clicked == false
+                ? Size.fromHeight(screenHeight * 0.07)
+                : Size.fromHeight(screenHeight * 0.0),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Container(
-                      height: 35,
-                      padding: EdgeInsets.all(const Size.fromWidth(5).width),
-                      child: TextButton(
-                        onPressed: () {
-                          setState(() {
-                            _clicked = false;
-                          });
-                        },
-                        child: const Icon(
-                          Icons.arrow_back_ios,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: screenWidth - (screenWidth * .35),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Chuva ",
-                            style: TextStyle(
-                              fontSize: 22.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Icon(
-                            MdiIcons.heart,
-                            color: const Color(0xFFB53FF5),
-                            size: const Size.fromWidth(30.0).width,
-                          ),
-                          const Text(
-                            " Flutter",
-                            style: TextStyle(
-                              fontSize: 22.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-                Container(
-                  child: const Text(
+                if (appState.clicked == false)
+                  const Text(
                     "Programação",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                     ),
                   ),
-                ),
-                if (_clicked == false)
+                if (appState.clicked == false)
                   Card(
                       elevation: 5,
                       shape: RoundedRectangleBorder(
@@ -150,15 +131,15 @@ class _CalendarState extends State<Calendar> {
                                 width: MediaQuery.of(context).size.width * 0.7,
                                 alignment: Alignment.center,
                                 child: const Text(
-                                  "Exibindo todas atividades",
+                                  "       Exibindo todas atividades",
                                   style: TextStyle(
-                                    fontSize: 13,
+                                    fontSize: 14,
                                   ),
                                 ),
                               )
                             ],
                           ))),
-                if (_clicked == false)
+                if (appState.clicked == false)
                   Container(
                     margin: const EdgeInsets.only(bottom: 4.0),
                   )
@@ -169,7 +150,7 @@ class _CalendarState extends State<Calendar> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            if (_clicked == false)
+            if (appState.clicked == false)
               Container(
                 margin: const EdgeInsets.symmetric(vertical: 1),
                 color: const Color(0xFF306DC3),
@@ -220,9 +201,10 @@ class _CalendarState extends State<Calendar> {
                   ],
                 ),
               ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 7.0),
-            ),
+            if (appState.clicked == false)
+              Container(
+                margin: const EdgeInsets.only(bottom: 14.0),
+              ),
             Expanded(
               child: FutureBuilder<List<EventData>?>(
                 future: fetchData(_currentDate),
@@ -235,10 +217,9 @@ class _CalendarState extends State<Calendar> {
                     final events = snapshot.data!;
                     return EventList(
                       events: events,
-                      clicked: _clicked,
                     );
                   } else {
-                    return Text('Nenhum dado disponível');
+                    return const Text('Nenhum dado disponível');
                   }
                 },
               ),
@@ -252,11 +233,10 @@ class _CalendarState extends State<Calendar> {
 
 ////////////////
 class Activity extends StatefulWidget {
-  dynamic event;
-  dynamic myColor;
-  int clickedID;
+  final EventData event;
+  final Color myColor;
 
-  Activity({super.key, required this.event, required this.myColor, required this.clickedID});
+  const Activity({super.key, required this.event, required this.myColor});
 
   @override
   State<Activity> createState() => _ActivityState();
@@ -266,12 +246,34 @@ class _ActivityState extends State<Activity> {
   bool _favorited = false;
 
   @override
-  Widget build(BuildContext context) {
-    final event = widget.event;
-    final myColor = widget.myColor;
-    int clickedID = widget.clickedID;
+  void initState() {
+    super.initState();
+    loadFavoritedState();
+  }
 
-    if (event.id == clickedID) {
+  Future<void> loadFavoritedState() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _favorited = prefs.getBool('favorited') ?? false;
+    });
+  }
+
+// No seu onPressed do botão, atualize e salve o estado
+  void toggleFavorited() async {
+    final prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _favorited = !_favorited;
+      prefs.setBool('favorited', _favorited);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final EventData event = widget.event;
+    final Color myColor = widget.myColor;
+    final appState = Provider.of<AppState>(context);
+
+    if (event.id == appState.clickedID) {
       return Column(children: [
         Column(
           children: [
@@ -281,19 +283,20 @@ class _ActivityState extends State<Activity> {
               child: Row(
                 children: [
                   Text(
-                      event.category,
-                  style: const TextStyle(
-                    color: Colors.white,
-                  ),
+                    event.category,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 15.0,
+                    ),
                   )
                 ],
               ),
             ),
             Container(
               padding: const EdgeInsets.all(10),
-              width: MediaQuery.of(context).size.width * .8,
+              width: MediaQuery.of(context).size.width * .9,
               child: Text(
-                  event.title,
+                event.title,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
@@ -302,72 +305,124 @@ class _ActivityState extends State<Activity> {
               ),
             ),
             Container(
-              child:
-                  Column(
+              padding: const EdgeInsets.only(left: 10),
+              child: Column(
+                children: [
+                  Row(
                     children: [
-                      Row(children: [
-                        const Icon(
-                          Icons.access_time_outlined,
-                          color: Color(0xFF366EC0),
-                        ),
-                        Text(" ${event.day} ${event.time} - ${event.timeEnd}"),
-                      ],),
-                      Row(children: [
-                        const Icon(
-                            Icons.location_on_sharp,
-                          color: Color(0xFF366EC0),
-                        ),
-                        Text(
-                            event.location
-                        ),
-                      ],)
+                      const Icon(
+                        Icons.access_time_outlined,
+                        color: Color(0xFF366EC0),
+                      ),
+                      Text(
+                        " ${event.day} ${event.time} - ${event.timeEnd}",
+                        style: const TextStyle(fontSize: 15.0),
+                      ),
                     ],
                   ),
-
-            ),
-            ElevatedButton.icon(
-              onPressed: () {
-                setState(() {
-                  _favorited = !_favorited;
-                });
-              },
-              icon: _favorited
-                  ? const Icon(Icons.star)
-                  : const Icon(Icons.star_outline),
-              label: Text(
-                  _favorited ? 'Remover da sua agenda' : 'Adicionar à sua agenda'),
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.location_on_sharp,
+                        color: Color(0xFF366EC0),
+                      ),
+                      Text(" ${event.location}",
+                          style: const TextStyle(fontSize: 15.0)),
+                    ],
+                  )
+                ],
+              ),
             ),
             Container(
-              child: HtmlWidget(event.description)
+              margin: const EdgeInsets.only(top: 15),
+              width: MediaQuery.of(context).size.width * .95,
+              height: 40,
+              child: ElevatedButton.icon(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF306DC3),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5))),
+                onPressed: toggleFavorited,
+                icon: _favorited
+                    ? const Icon(
+                        Icons.star,
+                        color: Colors.white,
+                      )
+                    : const Icon(Icons.star_outline, color: Colors.white),
+                label: Text(
+                    style: const TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
+                    _favorited
+                        ? 'Remover da sua agenda'
+                        : 'Adicionar à sua agenda'),
+              ),
             ),
-            Row(
-              children: [
-                Text("Palestrante")
-              ],
-            ),
-            Row(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: CachedNetworkImage(
-                    imageUrl: "${event.picture}",
-                    placeholder: (context, url) => const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
-                    width: 50,
-                  ),
-                ),
-                Column(
+            Container(
+                padding: const EdgeInsets.only(
+                    top: 70.0, bottom: 70.0, left: 15, right: 15),
+                child: HtmlWidget(
+                  '<div style="font-size: 16px !important;">${event.description}</div>',
+                  key: const Key('html_key'),
+                )),
+            Container(
+              padding: const EdgeInsets.only(left: 15),
+              child: Column(children: [
+                Row(
                   children: [
-                    Text(event.personName),
-                    Text(event.institution),
+                    Text(
+                      event.function,
+                      style: const TextStyle(
+                          fontSize: 16.0, fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
-              ],
+                Container(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Row(
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(right: 15),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(50),
+                            child: CachedNetworkImage(
+                              imageUrl: event.picture,
+                              placeholder: (context, url) =>
+                                  const CircularProgressIndicator(),
+                              errorWidget: (context, url, error) => const Icon(
+                                Icons.person,
+                                color: Color(0xFF898989),
+                                size: 45,
+                              ),
+                              width: 60.0,
+                            ),
+                          ),
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              width: 250,
+                              height: 23,
+                              child: Text(
+                                event.personName,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 250,
+                              child: Text(
+                                event.institution,
+                                style: const TextStyle(
+                                    fontSize: 16, color: Color(0xFF8D8D8D)),
+                              ),
+                            )
+                          ],
+                        ),
+                      ],
+                    )),
+              ]),
             ),
-
-
           ],
-        )
+        ),
       ]);
     }
     return Container();
@@ -467,24 +522,25 @@ class EventData {
   final String personName;
   final String institution;
   final String picture;
+  final String function;
 
-  EventData({
-    required this.id,
-    required this.date,
-    required this.time,
-    required this.dateEnd,
-    required this.timeEnd,
-    required this.day,
-    required this.title,
-    required this.description,
-    required this.category,
-    required this.color,
-    required this.location,
-    required this.type,
-    required this.personName,
-    required this.institution,
-    required this.picture,
-  });
+  EventData(
+      {required this.id,
+      required this.date,
+      required this.time,
+      required this.dateEnd,
+      required this.timeEnd,
+      required this.day,
+      required this.title,
+      required this.description,
+      required this.category,
+      required this.color,
+      required this.location,
+      required this.type,
+      required this.personName,
+      required this.institution,
+      required this.picture,
+      required this.function});
 
   factory EventData.fromJson(Map<String, dynamic> json) {
     final startDateTime = DateTime.parse(json['start']).toLocal();
@@ -536,29 +592,83 @@ class EventData {
       picture: json['people']?.isNotEmpty == true
           ? json['people'][0]['picture'] ?? ''
           : '',
+      function: json['people']?.isNotEmpty == true
+          ? json['people'][0]['role']['label']['pt-br'] ?? ''
+          : '',
     );
   }
 }
 
-//class EventList extends StatelessWidget {
 class EventList extends StatefulWidget {
   final List<EventData> events;
-  bool clicked;
-  int clickedID = 0;
 
-  EventList({super.key, required this.events, required this.clicked});
+  const EventList({super.key, required this.events});
 
   @override
   State<EventList> createState() => _EventListState();
 }
 
-class _EventListState extends State<EventList> {
+class _EventListState extends State<EventList> with TickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<Offset> _animation;
+
+  void initState() {
+    super.initState();
+    final appState = Provider.of<AppState>(context, listen: false);
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: () {
+        if (appState.clickedID == 8921) {
+          return const Duration(milliseconds: 0);
+        } else if (appState.clickedID == 8924) {
+          return const Duration(milliseconds: 1200);
+        } else {
+          return const Duration(milliseconds: 300);
+        }
+      }(),
+    );
+
+    _animation = Tween<Offset>(
+      begin: appState.clicked ? const Offset(1, 0) : const Offset(0, 0),
+      end: const Offset(0, 0),
+    ).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+
+    if (appState.clicked == false) {
+      _controller.value = 1.0; // Defina o valor inicial da animação
+    } else {
+      _controller.forward();
+    }
+  }
+
+  void playReverseAnimation() {
+    final appState = Provider.of<AppState>(context, listen: false);
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    _animation = Tween<Offset>(
+      begin: const Offset(1, 0),
+      end: const Offset(0, 0),
+    ).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
+    );
+
+    _controller.forward(); // Inicia a animação de retorno
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<EventData> events = widget.events;
-    bool clicked = widget.clicked;
-    int clickedID = widget.clickedID;
+    final appState = Provider.of<AppState>(context, listen: false);
 
+    if (appState.clicked == false && appState.clickedID == 8925) {
+      playReverseAnimation();
+    }
     Color hexToColor(String hexColor) {
       // Remova o "#" do início da string, se existir
       hexColor = hexColor.replaceAll("#", "");
@@ -578,225 +688,240 @@ class _EventListState extends State<EventList> {
       return Color.fromARGB(255, r, g, b);
     }
 
-    return ListView.builder(
-        itemCount: events.length,
-        itemBuilder: (context, index) {
-          final event = events[index];
-          Color myColor = hexToColor(event.color);
-          if (clicked == false) {
-            return Stack(
-              children: [
-                if (event.id == 8922)
-                  Card(
-                    margin: const EdgeInsets.only(top: 12, left: 14, right: 14),
-                    elevation: 5,
-                    color: myColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Container(
-                      constraints: const BoxConstraints(
-                        minHeight: 100,
-                      ),
-                      margin: const EdgeInsets.only(left: 5),
-                      decoration: const BoxDecoration(
-                        color: Colors.white, // Cor de fundo do container
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(8),
-                          // Arredonda o canto superior direito
-                          bottomRight: Radius.circular(
-                              8), // Arredonda o canto inferior direito
-                        ), // Define um raio de 10 para arredondar as bordas
-                      ),
-                      padding: const EdgeInsets.only(
-                          top: 10.0, left: 15.0, bottom: 10),
-                      child: Column(
-                        children: [
-                          Row(
+    return SlideTransition(
+        position: _animation,
+        child: ListView.builder(
+            itemCount: events.length,
+            itemBuilder: (context, index) {
+              final event = events[index];
+              Color myColor = hexToColor(event.color);
+              if (appState.clicked == false) {
+                return Stack(
+                  children: [
+                    if (event.id == 8922)
+                      Card(
+                        margin:
+                            const EdgeInsets.only(top: 12, left: 14, right: 14),
+                        elevation: 5,
+                        color: myColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            minHeight: 105,
+                          ),
+                          margin: const EdgeInsets.only(left: 5),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            // Cor de fundo do container
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(8),
+                              // Arredonda o canto superior direito
+                              bottomRight: Radius.circular(
+                                  8), // Arredonda o canto inferior direito
+                            ), // Define um raio de 10 para arredondar as bordas
+                          ),
+                          padding: const EdgeInsets.only(
+                              top: 10.0, left: 15.0, bottom: 10),
+                          child: Column(
                             children: [
-                              Text(
-                                '${event.type} de ${event.time} até ${event.timeEnd}',
-                                style: const TextStyle(
-                                  fontSize: 13.0,
+                              Row(
+                                children: [
+                                  Text(
+                                    '${event.type} de ${event.time} até ${event.timeEnd}',
+                                    style: const TextStyle(
+                                      fontSize: 13.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Wrap(
+                                  children: [
+                                    Text(
+                                      event.title,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.0,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Wrap(
-                              children: [
-                                Text(
-                                  event.title,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                event.personName,
-                                style: const TextStyle(
-                                  color: Color(0xFF7C7C7C),
-                                  fontSize: 14.0,
-                                ),
+                              Row(
+                                children: [
+                                  Text(
+                                    event.personName,
+                                    style: const TextStyle(
+                                      color: Color(0xFF7C7C7C),
+                                      fontSize: 14.0,
+                                    ),
+                                  )
+                                ],
                               )
                             ],
-                          )
-                        ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                if (event.id == 8922)
-                  Card(
-                    margin: const EdgeInsets.only(top: 8, left: 8, right: 8),
-                    elevation: 5,
-                    color: myColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Container(
-                      constraints: const BoxConstraints(
-                        minHeight: 100,
-                      ),
-                      margin: const EdgeInsets.only(left: 5),
-                      decoration: const BoxDecoration(
-                        color: Colors.white, // Cor de fundo do container
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(8),
-                          // Arredonda o canto superior direito
-                          bottomRight: Radius.circular(
-                              8), // Arredonda o canto inferior direito
-                        ), // Define um raio de 10 para arredondar as bordas
-                      ),
-                      padding: const EdgeInsets.only(
-                          top: 10.0, left: 15.0, bottom: 10),
-                      child: Column(
-                        children: [
-                          Row(
+                    if (event.id == 8922)
+                      Card(
+                        margin: const EdgeInsets.only(
+                            top: 8, left: 8, right: 8, bottom: 10),
+                        elevation: 5,
+                        color: myColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            minHeight: 105,
+                          ),
+                          margin: const EdgeInsets.only(left: 5),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            // Cor de fundo do container
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(8),
+                              // Arredonda o canto superior direito
+                              bottomRight: Radius.circular(
+                                  8), // Arredonda o canto inferior direito
+                            ), // Define um raio de 10 para arredondar as bordas
+                          ),
+                          padding: const EdgeInsets.only(
+                              top: 10.0, left: 15.0, bottom: 20),
+                          child: Column(
                             children: [
-                              Text(
-                                '${event.type} de ${event.time} até ${event.timeEnd}',
-                                style: const TextStyle(
-                                  fontSize: 13.0,
+                              Row(
+                                children: [
+                                  Text(
+                                    '${event.type} de ${event.time} até ${event.timeEnd}',
+                                    style: const TextStyle(
+                                      fontSize: 13.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Wrap(
+                                  children: [
+                                    Text(
+                                      event.title,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.0,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Wrap(
-                              children: [
-                                Text(
-                                  event.title,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                event.personName,
-                                style: const TextStyle(
-                                  color: Color(0xFF7C7C7C),
-                                  fontSize: 14.0,
-                                ),
+                              Row(
+                                children: [
+                                  Text(
+                                    event.personName,
+                                    style: const TextStyle(
+                                      color: Color(0xFF7C7C7C),
+                                      fontSize: 14.0,
+                                    ),
+                                  )
+                                ],
                               )
                             ],
-                          )
-                        ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                GestureDetector(
-                  onTap: () {
-                    if (event.id == 8921 ||
-                        event.id == 8922 ||
-                        event.id == 8924 ||
-                        event.id == 8925) {
-                      setState(() {
-                          widget.clickedID = event.id;
-                          widget.clicked = true;
-                      });
-                    }
-                  },
-                  child: Card(
-                    elevation: 5,
-                    color: myColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Container(
-                      constraints: const BoxConstraints(
-                        minHeight: 100,
-                      ),
-                      margin: const EdgeInsets.only(left: 5),
-                      decoration: const BoxDecoration(
-                        color: Colors.white, // Cor de fundo do container
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(8),
-                          // Arredonda o canto superior direito
-                          bottomRight: Radius.circular(
-                              8), // Arredonda o canto inferior direito
-                        ), // Define um raio de 10 para arredondar as bordas
-                      ),
-                      padding: const EdgeInsets.only(
-                          top: 10.0, left: 15.0, bottom: 10),
-                      child: Column(
-                        children: [
-                          Row(
+                    GestureDetector(
+                      onTap: () {
+                        if (event.id == 8921 ||
+                            event.id == 8922 ||
+                            event.id == 8924 ||
+                            event.id == 8925) {
+                          appState.updateClickedID(event.id);
+                          appState.hideElement();
+                        }
+                      },
+                      child: Card(
+                        elevation: 5,
+                        color: myColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            minHeight: 105,
+                          ),
+                          margin: const EdgeInsets.only(left: 5),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            // Cor de fundo do container
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(8),
+                              // Arredonda o canto superior direito
+                              bottomRight: Radius.circular(
+                                  8), // Arredonda o canto inferior direito
+                            ), // Define um raio de 10 para arredondar as bordas
+                          ),
+                          padding: const EdgeInsets.only(
+                              top: 10.0, left: 15.0, bottom: 15),
+                          child: Column(
                             children: [
-                              Text(
-                                '${event.type} de ${event.time} até ${event.timeEnd}',
-                                style: const TextStyle(
-                                  fontSize: 13.0,
+                              Row(
+                                children: [
+                                  Text(
+                                    '${event.type} de ${event.time} até ${event.timeEnd}',
+                                    style: const TextStyle(
+                                      fontSize: 13.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Wrap(
+                                  children: [
+                                    Text(
+                                      event.title,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 15.0,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
-                          ),
-                          Container(
-                            alignment: Alignment.centerLeft,
-                            child: Wrap(
-                              children: [
-                                Text(
-                                  event.title,
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15.0,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Text(
-                                event.personName,
-                                style: const TextStyle(
-                                  color: Color(0xFF7C7C7C),
-                                  fontSize: 14.0,
-                                ),
+                              Row(
+                                children: [
+                                  Text(
+                                    event.personName,
+                                    style: const TextStyle(
+                                      color: Color(0xFF7C7C7C),
+                                      fontSize: 14.0,
+                                    ),
+                                  )
+                                ],
                               )
                             ],
-                          )
-                        ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                )
-              ],
-            );
-          } else {
-            return Activity(event: event, myColor: myColor, clickedID: clickedID,);
-          }
-        });
+                    )
+                  ],
+                );
+              }
+              if (appState.clickedID == appState.clickedID) {
+                _controller.forward();
+                return Activity(event: event, myColor: myColor);
+              } else {
+                _controller.reverse();
+              }
+            }));
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
