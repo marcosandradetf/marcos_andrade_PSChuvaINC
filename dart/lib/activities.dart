@@ -64,7 +64,7 @@ class _ActivityState extends State<Activity> {
       cardList.add(
         Card(
           elevation: 5,
-          //color: myColor,
+          color: myColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
@@ -75,53 +75,51 @@ class _ActivityState extends State<Activity> {
             margin: const EdgeInsets.only(left: 5),
             decoration: const BoxDecoration(
               color: Colors.white,
-              // Cor de fundo do container
               borderRadius: BorderRadius.only(
                 topRight: Radius.circular(8),
-                // Arredonda o canto superior direito
-                bottomRight:
-                Radius.circular(8), // Arredonda o canto inferior direito
-              ), // Define um raio de 10 para arredondar as bordas
+                bottomRight: Radius.circular(8),
+              ),
             ),
             padding: const EdgeInsets.only(top: 10.0, left: 15.0, bottom: 10),
             child: Column(
               children: [
-                Row(
-                  children: [
-                    Text(
-                      '${event.type} de ${event.time} até ${event.timeEnd}',
-                      style: const TextStyle(
-                        fontSize: 13.0,
-                      ),
-                    ),
-                  ],
-                ),
                 Container(
-                  alignment: Alignment.centerLeft,
-                  child: Wrap(
+                  padding: const EdgeInsets.only(left: 5, right: 20),
+                  child: Row(
                     children: [
                       Text(
-                        subs[i].title,
-                        //event.title,
+                        '${event.type} de ${event.time} até ${event.timeEnd}',
                         style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15.0,
-                        ),
+                            fontSize: 14.0,
+                            height: 2,
+                            color: Color(0xFF393939)),
                       ),
                     ],
                   ),
                 ),
-                Row(
-                  children: [
-                    Text(
-                      subs[i].author,
-                      style: const TextStyle(
-                        color: Color(0xFF7C7C7C),
-                        fontSize: 14.0,
-                      ),
-                    )
-                  ],
-                )
+                Container(
+                  padding: const EdgeInsets.only(left: 5, right: 20),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    maxLines: 2, // Define o número máximo de linhas
+                    overflow: TextOverflow.ellipsis,
+                    subs[i].title,
+                    style: const TextStyle(fontSize: 18.2, height: 1.1),
+                  ),
+                ),
+                Container(
+                    padding: const EdgeInsets.only(left: 5, right: 20),
+                    child: Row(
+                      children: [
+                        Text(
+                          subs[i].author,
+                          style: const TextStyle(
+                            color: Color(0xFF7C7C7C),
+                            fontSize: 16.0,
+                          ),
+                        )
+                      ],
+                    ))
               ],
             ),
           ),
@@ -170,192 +168,203 @@ class _ActivityState extends State<Activity> {
         ),
         body: Center(
             child: Column(children: [
-              ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: events.length,
-                  itemBuilder: (context, index) {
-                    final event = events[index];
-                    return event.id == appState.clickedID
-                        ? Column(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(5),
-                          color: myColor,
-                          child: Row(
-                            children: [
-                              Text(
-                                event.category,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15.0,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(10),
-                          width: MediaQuery.of(context).size.width * .9,
-                          child: Text(
-                            event.title,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
+          ListView.builder(
+              shrinkWrap: true,
+              itemCount: events.length,
+              itemBuilder: (context, index) {
+                final event = events[index];
+                return event.id == appState.clickedID
+                    ? Column(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(5),
+                            color: myColor,
+                            child: Row(
+                              children: [
+                                Text(
+                                  event.category,
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15.0,
+                                  ),
+                                )
+                              ],
                             ),
                           ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.only(left: 10),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.access_time_outlined,
-                                    color: Color(0xFF366EC0),
-                                  ),
-                                  Text(
-                                    " ${event.day} ${event.time} - ${event.timeEnd}",
-                                    style: const TextStyle(fontSize: 15.0),
-                                  ),
-                                ],
+                          Container(
+                            padding: const EdgeInsets.all(10),
+                            width: MediaQuery.of(context).size.width * .9,
+                            child: Text(
+                              event.title,
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
                               ),
-                              Row(
-                                children: [
-                                  const Icon(
-                                    Icons.location_on_sharp,
-                                    color: Color(0xFF366EC0),
-                                  ),
-                                  Text(" ${event.location}",
-                                      style: const TextStyle(fontSize: 15.0)),
-                                ],
-                              )
-                            ],
+                            ),
                           ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 15),
-                          width: MediaQuery.of(context).size.width * .95,
-                          height: 40,
-                          child: ElevatedButton.icon(
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF306DC3),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(5))),
-                            onPressed: toggleFavorited,
-                            icon: _favorited
-                                ? const Icon(
-                              Icons.star,
-                              color: Colors.white,
-                            )
-                                : const Icon(Icons.star_outline,
-                                color: Colors.white),
-                            label: Text(
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold),
-                                _favorited
-                                    ? 'Remover da sua agenda'
-                                    : 'Adicionar à sua agenda'),
-                          ),
-                        ),
-                        Container(
-                            padding: const EdgeInsets.only(
-                                top: 70.0, bottom: 70.0, left: 15, right: 15),
-                            child: HtmlWidget(
-                              '<div style="font-size: 16px !important;">${event.description}</div>',
-                              key: const Key('html_key'),
-                            )),
-                        GestureDetector(
-                            onTap: () {
-                              appState.clickedID == 8921 || appState.clickedID == 8924  ? GoRouter.of(context).go('/Author') : null;
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.only(left: 15),
-                              child: Column(children: [
+                          Container(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Column(
+                              children: [
                                 Row(
                                   children: [
+                                    const Icon(
+                                      Icons.access_time_outlined,
+                                      color: Color(0xFF366EC0),
+                                    ),
                                     Text(
-                                      event.function,
-                                      style: const TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.bold),
-                                    )
+                                      " ${event.day} ${event.time}h - ${event.timeEnd}h",
+                                      style: const TextStyle(fontSize: 15.0),
+                                    ),
                                   ],
                                 ),
-                                (event.id != 8922)
-                                    ? Container(
-                                    padding:
-                                    const EdgeInsets.only(top: 10),
+                                Row(
+                                  children: [
+                                    const Icon(
+                                      Icons.location_on_sharp,
+                                      color: Color(0xFF366EC0),
+                                    ),
+                                    Text(" ${event.location}",
+                                        style: const TextStyle(fontSize: 15.0)),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: const EdgeInsets.only(top: 15),
+                            width: MediaQuery.of(context).size.width * .95,
+                            height: 40,
+                            child: ElevatedButton.icon(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF306DC3),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5))),
+                              onPressed: () {
+                                setState(() {
+                                  _favorited = !_favorited;
+                                });
+                                toggleFavorited;
+                              },
+                              icon: _favorited
+                                  ? const Icon(
+                                      Icons.star,
+                                      color: Colors.white,
+                                    )
+                                  : const Icon(Icons.star_outline,
+                                      color: Colors.white),
+                              label: Text(
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                  _favorited
+                                      ? 'Remover da sua agenda'
+                                      : 'Adicionar à sua agenda'),
+                            ),
+                          ),
+                          Container(
+                              padding: const EdgeInsets.only(
+                                  top: 70.0, bottom: 70.0, left: 15, right: 15),
+                              child: HtmlWidget(
+                                '<div style="font-size: 16px !important;">${event.description}</div>',
+                                key: const Key('html_key'),
+                              )),
+                          GestureDetector(
+                              onTap: () {
+                                //appState.clickedID == 8921 || appState.clickedID == 8924  ? GoRouter.of(context).go('/Author') : null;
+                                appState.clickedName ==
+                                            "Stephen William Hawking" ||
+                                        appState.clickedName ==
+                                            " Neil deGrasse Tyson"
+                                    ? GoRouter.of(context).go('/Author')
+                                    : null;
+                              },
+                              child: Column(children: [
+                                Container(
+                                    padding: const EdgeInsets.only(left: 20),
                                     child: Row(
                                       children: [
-                                        Container(
-                                          padding: const EdgeInsets.only(
-                                              right: 15),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                            BorderRadius.circular(50),
-                                            child: CachedNetworkImage(
-                                              imageUrl: event.picture,
-                                              placeholder: (context,
-                                                  url) =>
-                                              const CircularProgressIndicator(),
-                                              errorWidget:
-                                                  (context, url, error) =>
-                                              const Icon(
-                                                Icons.person,
-                                                color: Color(0xFF898989),
-                                                size: 45,
-                                              ),
-                                              width: 60.0,
-                                            ),
-                                          ),
-                                        ),
-                                        Column(
-                                          children: [
-                                            SizedBox(
-                                              width: 250,
-                                              height: 23,
-                                              child: Text(
-                                                event.personName,
-                                                style: const TextStyle(
-                                                    fontSize: 18),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: 250,
-                                              child: Text(
-                                                event.institution,
-                                                style: const TextStyle(
-                                                    fontSize: 16,
-                                                    color: Color(
-                                                        0xFF8D8D8D)),
-                                              ),
-                                            )
-                                          ],
-                                        ),
+                                        Text(
+                                          event.function,
+                                          style: const TextStyle(
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold),
+                                        )
                                       ],
-                                    ))
+                                    )),
+                                (event.id != 8922)
+                                    ? Container(
+                                        padding: const EdgeInsets.only(top: 10),
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              padding: const EdgeInsets.only(
+                                                  right: 15, left: 20),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                child: CachedNetworkImage(
+                                                  imageUrl: event.picture,
+                                                  placeholder: (context, url) =>
+                                                      const CircularProgressIndicator(),
+                                                  errorWidget:
+                                                      (context, url, error) =>
+                                                          const Icon(
+                                                    Icons.person,
+                                                    color: Color(0xFF898989),
+                                                    size: 45,
+                                                  ),
+                                                  width: 60.0,
+                                                ),
+                                              ),
+                                            ),
+                                            Column(
+                                              children: [
+                                                SizedBox(
+                                                  width: 250,
+                                                  height: 23,
+                                                  child: Text(
+                                                    event.personName,
+                                                    style: const TextStyle(
+                                                        fontSize: 18),
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  width: 250,
+                                                  child: Text(
+                                                    event.institution,
+                                                    style: const TextStyle(
+                                                        fontSize: 16,
+                                                        color:
+                                                            Color(0xFF8D8D8D)),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ],
+                                        ))
                                     : Column(children: [
-                                  Container(
-                                      padding: const EdgeInsets.only(
-                                          bottom: 20, left: 10),
-                                      alignment: Alignment.topLeft,
-                                      child: const Text(
-                                        "Sub-atividades",
-                                        style: TextStyle(
-                                            color: Color(0xFF747474),
-                                            fontSize: 17),
-                                      )),
-                                  Column(children: cardList),
-                                ])
-                              ]),
-                            )),
-                      ],
-                    )
-                        : Container();
-                  })
-            ])));
+                                        Container(
+                                            padding: const EdgeInsets.only(
+                                                bottom: 20, left: 20),
+                                            alignment: Alignment.topLeft,
+                                            child: const Text(
+                                              "Sub-atividades",
+                                              style: TextStyle(
+                                                  color: Color(0xFF747474),
+                                                  fontSize: 17),
+                                            )),
+                                        Container(
+                                            padding: const EdgeInsets.only(
+                                                left: 2, right: 2),
+                                            child: Column(children: cardList))
+                                      ])
+                              ])),
+                        ],
+                      )
+                    : Container();
+              })
+        ])));
   }
 }

@@ -8,6 +8,7 @@ import 'package:chuva_dart/activities.dart';
 import 'package:chuva_dart/data.dart';
 import 'package:chuva_dart/home_content.dart';
 import 'package:chuva_dart/author.dart';
+import 'package:chuva_dart/otherActivity.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
@@ -33,6 +34,12 @@ class AppState extends ChangeNotifier {
     notifyListeners();
   }
 
+  String clickedName = "";
+
+  void setClickedName(String name) {
+    clickedName = name;
+  }
+
   DateTime currentDate = DateTime(2023, 11, 26);
 
   void setDate(DateTime newDate) {
@@ -44,7 +51,6 @@ class AppState extends ChangeNotifier {
   late EventData event;
 
   late Color myColor;
-
 }
 
 /// The route configuration.
@@ -66,6 +72,12 @@ final GoRouter _router = GoRouter(
           path: 'Author',
           builder: (BuildContext context, GoRouterState state) {
             return const Author();
+          },
+        ),
+        GoRoute(
+          path: 'AnyActivity',
+          builder: (BuildContext context, GoRouterState state) {
+            return const AnyActivity();
           },
         ),
       ],
@@ -108,7 +120,6 @@ class _CalendarState extends State<Calendar> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     final appState = Provider.of<AppState>(context);
@@ -118,77 +129,78 @@ class _CalendarState extends State<Calendar> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "Chuva 💜 Flutter",
-              style: TextStyle(
-                fontSize: 22.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+            const Column(
+              children: [
+                Text(
+                  "Chuva 💜 Flutter",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  "Programação",
+                  style: TextStyle(
+                    fontSize: 22.0,
+                    color: Colors.white,
+                  ),
+                )
+              ],
             ),
             Container(
               width: 50,
             ),
           ],
         ),
-        leading: Container(
-            padding: const EdgeInsets.only(top: 20),
-            child: const Icon(
-              Icons.arrow_back_ios,
-              color: Colors.white,
-            )),
+        leading: const Icon(
+          Icons.arrow_back_ios,
+          color: Colors.white,
+        ),
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(65),
+          preferredSize: const Size.fromHeight(60),
           child: Column(
             children: [
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Programação",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  )
-                ],
-              ),
-              Card(
-                  elevation: 5,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      side: const BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      )),
-                  child: Row(
-                    //mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Card(
-                        color: const Color(0xFF306DC3),
-                        elevation: 5,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 5),
-                            child: const Icon(
-                              Icons.calendar_month_outlined,
-                            )),
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width * 0.7,
-                        alignment: Alignment.center,
-                        child: const Text(
-                          "       Exibindo todas atividades",
-                          style: TextStyle(
-                            fontSize: 14,
+              Container(
+                width: MediaQuery.of(context).size.width * .9,
+                padding: const EdgeInsets.only(bottom: 5),
+                child: Card(
+                    elevation: 5,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: const BorderSide(
+                          color: Colors.white,
+                          width: 1,
+                        )),
+                    child: Row(
+                      //mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Card(
+                          color: const Color(0xFF306DC3),
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
                           ),
+                          child: Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 10, vertical: 5),
+                              child: const Icon(
+                                Icons.calendar_month_outlined,
+                              )),
                         ),
-                      )
-                    ],
-                  )),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          alignment: Alignment.center,
+                          child: const Text(
+                            "       Exibindo todas atividades",
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        )
+                      ],
+                    )),
+              ),
             ],
           ),
         ),
@@ -203,7 +215,7 @@ class _CalendarState extends State<Calendar> {
                 child: Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(2),
+                      padding: const EdgeInsets.all(5),
                       color: Colors.white,
                       child: const Column(
                         children: [
@@ -224,10 +236,11 @@ class _CalendarState extends State<Calendar> {
                         for (int day = 26; day <= 30; day++)
                           Container(
                             constraints: BoxConstraints(
-                                minWidth:
-                                MediaQuery.of(context).size.width * 0.125),
+                                maxWidth:
+                                    MediaQuery.of(context).size.width * 0.133),
                             child: OutlinedButton(
                               style: OutlinedButton.styleFrom(
+                                  padding: const EdgeInsets.all(5),
                                   side: const BorderSide(
                                       style: BorderStyle.none)),
                               onPressed: () {
@@ -252,27 +265,30 @@ class _CalendarState extends State<Calendar> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(bottom: 7.0),
+                margin: const EdgeInsets.only(bottom: 12.0),
               ),
               Expanded(
                   child: FutureBuilder<List<EventData>?>(
-                    future: fetchData(_currentDate),
-                    builder: (context, snapshot) {
-                      if (snapshot.connectionState ==
-                          ConnectionState.waiting) {
-                        return const Center(
-                            child: CircularProgressIndicator());
-                      } else if (snapshot.hasError) {
-                        return Text('Erro: ${snapshot.error}');
-                      } else if (snapshot.hasData) {
-                        final events = snapshot.data!;
-                        return EventList(events: events);
-                      } else {
-                        return const Text('Nenhum dado disponível');
-                      }
-                    },
-                  )
-              )]),
+                future: fetchData(_currentDate),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Text('Erro: ${snapshot.error}');
+                  } else if (snapshot.hasData) {
+                    final events = snapshot.data!;
+                    //return EventList(events: events);
+                    return KeyedSubtree(
+                        key: UniqueKey(),
+                  child: EventList(
+                      key: GlobalKey(),
+                      events: events));
+                  } else {
+                    return const Text('Nenhum dado disponível');
+                  }
+                },
+              )),
+            ]),
       ),
     );
   }

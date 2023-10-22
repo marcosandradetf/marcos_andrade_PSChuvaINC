@@ -14,7 +14,9 @@ class EventData {
   final String location;
   final String type;
   final String personName;
+  final String allPersonsNames;
   final String institution;
+  final String bio;
   final String picture;
   final String function;
 
@@ -32,9 +34,13 @@ class EventData {
         required this.location,
         required this.type,
         required this.personName,
+        required this.allPersonsNames,
         required this.institution,
+        required this.bio,
         required this.picture,
         required this.function});
+
+
 
   factory EventData.fromJson(Map<String, dynamic> json) {
     final startDateTime = DateTime.parse(json['start']).toLocal();
@@ -46,49 +52,41 @@ class EventData {
     final timeFormatter = DateFormat('HH:mm');
     final dateFormatter = DateFormat('yyyy-MM-dd');
 
-    final time =
-    //timeFormatter.format(startDateTime.toLocal().add(timeZoneOffset));
-    timeFormatter.format(startDateTime.toLocal());
-    final timeEnd =
-    timeFormatter.format(endDateTime.toLocal().add(timeZoneOffset));
-    final date =
-    //dateFormatter.format(startDateTime.toLocal().add(timeZoneOffset));
-    dateFormatter.format(startDateTime.toLocal());
-    final dateEnd =
-    dateFormatter.format(endDateTime.toLocal().add(timeZoneOffset));
+    final time = timeFormatter.format(startDateTime.toLocal());
+    final timeEnd = timeFormatter.format(endDateTime.toLocal().add(timeZoneOffset));
+    final date = dateFormatter.format(startDateTime.toLocal());
+    final dateEnd = dateFormatter.format(endDateTime.toLocal().add(timeZoneOffset));
+
+    final people = json['people'];
+    final allPeoples = <String>[];
+
+    for (var person in people) {
+      if (person['name'] != null) {
+        allPeoples.add(person['name']);
+      }
+    }
 
     return EventData(
       id: json['id'] ?? 0,
-      // Se 'id' for nulo, atribui 0
       date: date,
       time: time,
-      // Se 'start' for nulo, atribui uma string vazia
       dateEnd: dateEnd,
       timeEnd: timeEnd,
       day: day,
-      // Se 'end' for nulo, atribui uma string vazia
       title: json['title']?['pt-br'] ?? '',
-      // Se 'title' ou 'pt-br' for nulo, atribui uma string vazia
       description: json['description']?['pt-br'] ?? '',
-      // Mesma lógica aqui
       category: json['category']?['title']?['pt-br'] ?? '',
       color: json['category']?["color"] ?? '',
       location: json['locations']?.isNotEmpty == true
           ? json['locations'][0]['title']['pt-br'] ?? ''
           : '',
       type: json['type']?['title']?['pt-br'] ?? '',
-      personName: json['people']?.isNotEmpty == true
-          ? json['people'][0]['name'] ?? ''
-          : '',
-      institution: json['people']?.isNotEmpty == true
-          ? json['people'][0]['institution'] ?? ''
-          : '',
-      picture: json['people']?.isNotEmpty == true
-          ? json['people'][0]['picture'] ?? ''
-          : '',
-      function: json['people']?.isNotEmpty == true
-          ? json['people'][0]['role']['label']['pt-br'] ?? ''
-          : '',
+      personName: allPeoples.isNotEmpty ? allPeoples.first : '', // Primeiro nome
+      allPersonsNames: allPeoples.join(', '), // Concatena os nomes com uma vírgula e espaço
+      institution: people.isNotEmpty ? people[0]['institution'] ?? '' : '',
+      bio: people.isNotEmpty ? people[0]['bio']['pt-br'] ?? '' : '',
+      picture: people.isNotEmpty ? people[0]['picture'] ?? '' : '',
+      function: people.isNotEmpty ? people[0]['role']['label']['pt-br'] ?? '' : '',
     );
   }
 }
