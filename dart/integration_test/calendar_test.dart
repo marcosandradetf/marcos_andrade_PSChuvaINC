@@ -15,7 +15,6 @@ import 'package:chuva_dart/otherActivity.dart';
 
 
 
-
 void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 

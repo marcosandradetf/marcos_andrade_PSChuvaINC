@@ -92,7 +92,7 @@ class _AnyActivityState extends State<AnyActivity> {
             child: Column(children: [
           ListView.builder(
               shrinkWrap: true,
-              itemCount: 10,
+              itemCount: events.length,
               itemBuilder: (context, index) {
                 final activities = events[index];
                 final Color myColor = hexToColor(activities.color);

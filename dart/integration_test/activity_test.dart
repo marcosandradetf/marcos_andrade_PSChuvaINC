@@ -57,25 +57,24 @@ void main() {
       expect(find.text(' domingo 07:00h - 08:00h'), findsOneWidget);
       expect(find.text('Adicionar à sua agenda'), findsOneWidget);
       expect(find.text('Stephen William Hawking'), findsOneWidget);
-    });
 
-    testWidgets('Verifica se favoritar funciona', (WidgetTester tester) async {
-      await loadActivityPage(tester);
+      print("Verifica se favoritar funciona");
+
       await tester.pumpAndSettle();
-      await expectLater(
-        find.byType(Activity),
-        matchesGoldenFile('../screenshots/ActivityPage-Unfavorited.png'),
-      );
-      await tester.tap(find.text('Adicionar à sua agenda'));
-      await tester.pumpAndSettle();
+            await expectLater(
+              find.byType(Activity),
+              matchesGoldenFile('../screenshots/ActivityPage-Unfavorited.png'),
+            );
+            await tester.tap(find.text('Adicionar à sua agenda'));
+            await tester.pumpAndSettle();
 
-      expect(find.text('Remover da sua agenda'), findsOneWidget);
-      await expectLater(
-        find.byType(Activity),
-        matchesGoldenFile('../screenshots/ActivityPage-Favorited.png'),
-      );
+            expect(find.text('Remover da sua agenda'), findsOneWidget);
+            await expectLater(
+              find.byType(Activity),
+              matchesGoldenFile('../screenshots/ActivityPage-Favorited.png'),
+            );
+
     });
-
 
   });
 
