@@ -46,6 +46,7 @@ class AppState extends ChangeNotifier {
     currentDate = newDate;
   }
 
+  //late List<EventData> events;
   late List<EventData> events;
 
   late EventData event;
